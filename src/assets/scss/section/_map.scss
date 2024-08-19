@@ -1,0 +1,8 @@
+.map {
+  margin-left: 400px;
+  height: calc(100vh - 74px);
+
+  @media (max-width: 800px) {
+    height: calc((100vh - 134px));
+  }
+}

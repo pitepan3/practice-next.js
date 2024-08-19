@@ -1,0 +1,42 @@
+.sidebar {
+  background-color: var(--mainBg-color);
+  width: 400px;
+  height: 100%;
+  padding: 16px;
+  position: fixed;
+  top: 74px;
+  left: 0;
+
+  .sidebar__search {
+    display: flex;
+    flex-direction: column;
+
+
+    input {
+      height: 40px;
+    }
+  }
+
+  .sidebar__area {
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 20px;
+    border: 1px solid var(--black);
+
+
+    span {
+      text-align: center;
+      padding: 20px;
+
+      &:hover {
+        color: var(--white);
+        background-color: var(--black);
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    top: 134px;
+  }
+}

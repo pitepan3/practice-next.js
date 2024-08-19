@@ -2,16 +2,17 @@
 
 import React from "react";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Map from "@/components/Map";
+import Sidebar from "@/components/Sidebar";
 
 export default function Home() {
   return (
     <>
       <Header />
       <main id="main" role="main">
-
+        <Sidebar />
       </main>
-      <Footer />
+      <Map />
     </>
   )
 }
