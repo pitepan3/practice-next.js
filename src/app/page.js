@@ -4,7 +4,7 @@ import React from "react";
 import Header from "@/components/Header";
 import Map from "@/components/Map";
 import Sidebar from "@/components/Sidebar";
-import LoginModal from "@/components/LoginModal";
+import Signup from "@/pages/Signup";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <main id="main" role="main">
         <Sidebar />
         <Map />
-        <LoginModal />
+        <Signup />
       </main>
     </>
   )
