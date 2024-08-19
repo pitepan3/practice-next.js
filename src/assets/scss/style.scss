@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body {
+  position: relative;
+}
+
 // setting
 @import "setting/vars";
 @import "setting/reset";
@@ -8,3 +12,4 @@
 @import "section/map";
 @import "section/header";
 @import "section/sidebar";
+@import "section/loginmodal";
