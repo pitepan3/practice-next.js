@@ -11,8 +11,8 @@ export default function Home() {
       <Header />
       <main id="main" role="main">
         <Sidebar />
+        <Map />
       </main>
-      <Map />
     </>
   )
 }
