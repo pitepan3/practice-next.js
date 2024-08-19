@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import Link from "next/link";
+
 
 const Header = () => {
   useEffect(() => {
@@ -35,7 +37,7 @@ const Header = () => {
 
         <ul className='header__login'>
           <li id='loginBtn' className='item'>로그인</li>
-          <li id='signupBtn' className='item'>회원가입</li>
+          <Link href="/Signup" id='signupBtn' className='item'>회원가입</Link>
         </ul>
       </div>
 
