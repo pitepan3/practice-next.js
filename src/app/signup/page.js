@@ -10,7 +10,7 @@ export default function signup() {
       </div>
       <div className='signup__container'>
         <div className='signup__header'>
-          <h3 className='title'>title</h3>
+          <h3 className='title'>개인회원 가입을 환영합니다!</h3>
         </div>
 
         <div className='signup__main'>
@@ -20,8 +20,11 @@ export default function signup() {
           <div className='facebook'>
             <span className='text'>text</span>
           </div>
+          <div className='insta'>
+            <span className='text'>인스타 추가예정</span>
+          </div>
           <div className='email'>
-            <span className='text'>text</span>
+            <span className='text'>이메일 추가예정</span>
           </div>
         </div>
       </div>

@@ -20,6 +20,9 @@ const page = () => {
           <div className='facebook'>
             <span className='text'>페이스북으로 시작</span>
           </div>
+          <div className='insta'>
+            <span className='text'>인스타그램 추가예정</span>
+          </div>
 
           <div className='login__form'>
             <p className='title'>
