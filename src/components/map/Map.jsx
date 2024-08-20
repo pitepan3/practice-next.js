@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+"use client"
+import React, { useEffect } from 'react'
 
-function Map() {
+const Map = () => {
   useEffect(() => {
     const mapScript = document.createElement('script');
 
@@ -29,4 +30,4 @@ function Map() {
   );
 }
 
-export default Map;
+export default Map

@@ -1,5 +1,4 @@
-import "@/assets/scss/style.scss"
-
+import "./globals.scss";
 
 export const metadata = {
   title: "Hoon",
@@ -9,8 +8,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-      <body>{children}</body>
+      <body>
+        {children}
+      </body>
     </html>
   );
 }

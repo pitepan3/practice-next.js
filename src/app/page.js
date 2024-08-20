@@ -1,15 +1,13 @@
-"use client";
-
 import React from "react";
-import Header from "@/components/Header";
-import Map from "@/components/Map";
-import Sidebar from "@/components/Sidebar";
+import Header from "@/components/header/Header";
+import Sidebar from "@/components/sidebar/Sidebar";
+import Map from "@/components/map/Map";
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <main id="main" role="main">
+      <main id="main">
+        <Header />
         <Sidebar />
         <Map />
       </main>
