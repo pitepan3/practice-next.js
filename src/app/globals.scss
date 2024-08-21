@@ -133,6 +133,8 @@ img {
 
   --pink: #FFB6C1;
 
+  --yellow: #f8f411;
+
   font-family: var(--mainEng-font), var(--mainKor-font);
   font-size: 16px;
   line-height: 1.5;
@@ -352,8 +354,8 @@ img {
         }
       }
 
-      .facebook {
-        background-color: var(--blue);
+      .kakao {
+        background-color: var(--yellow);
         color: var(--white);
         display: flex;
         padding: 16px;
@@ -363,46 +365,19 @@ img {
         cursor: pointer;
         position: relative;
         margin-bottom: 16px;
+        height: 56px;
 
         .text {
           font-weight: 900;
 
           &::before {
             content: '';
-            background-image: url(../../public/facebook.PNG);
+            background-image: url(../../public/kakao-talk.png);
             background-size: cover;
             width: 28px;
             height: 28px;
             position: absolute;
             left: 12px;
-          }
-        }
-      }
-
-      .insta {
-        background-color: var(--pink);
-        color: var(--white);
-        display: flex;
-        padding: 16px;
-        border-radius: 12px;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        position: relative;
-        margin-bottom: 16px;
-
-        .text {
-          font-weight: 900;
-
-          &::before {
-            content: '';
-            background-image: url(../../public/instagram.png);
-            background-size: cover;
-            width: 36px;
-            height: 36px;
-            position: absolute;
-            left: 12px;
-            top: 12px;
           }
         }
       }
@@ -558,8 +533,8 @@ img {
         }
       }
 
-      .facebook {
-        background-color: var(--blue);
+      .kakao {
+        background-color: var(--yellow);
         color: var(--white);
         display: flex;
         padding: 16px;
@@ -576,71 +551,12 @@ img {
 
           &::before {
             content: '';
-            background-image: url(../../public/facebook.PNG);
+            background-image: url(../../public/kakao-talk.png);
             background-size: cover;
             width: 40px;
             height: 32px;
             position: absolute;
-            left: 12px;
-            margin-top: 2px;
-          }
-        }
-      }
-
-      .insta {
-        background-color: var(--pink);
-        color: var(--white);
-        display: flex;
-        padding: 16px;
-        border-radius: 12px;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        position: relative;
-        margin-bottom: 24px;
-
-        .text {
-          font-weight: 800;
-          font-size: 24px;
-
-          &::before {
-            content: '';
-            background-image: url(../../public/instagram.png);
-            background-size: cover;
-            width: 36px;
-            height: 36px;
-            position: absolute;
-            left: 12px;
-            margin-top: 2px;
-          }
-        }
-      }
-
-      .email {
-        background-color: var(--black300);
-        color: var(--white);
-        display: flex;
-        padding: 16px;
-        border-radius: 12px;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        position: relative;
-        margin-bottom: 24px;
-
-        .text {
-          font-weight: 800;
-          font-size: 24px;
-
-          &::before {
-            content: '';
-            background-image: url(../../public/mail.png);
-            background-size: cover;
-            width: 32px;
-            height: 32px;
-            position: absolute;
-            left: 12px;
-            margin-top: 2px;
+            left: 10px;
           }
         }
       }
