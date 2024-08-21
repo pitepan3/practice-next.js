@@ -1,18 +1,10 @@
-import React from 'react'
-import Link from 'next/link'
+"use client"
 
-const client_id = '32a92ed3ece50a34d8287d91e7fbce9e'
-const redirect_uri = 'https://localhost:3000/login_kakao'
-const response_type = 'code' 
+import React, { useEffect } from 'react'
+import Link from 'next/link'
+import KakaoLogin from '@/components/kakaologin/KakaoLogin'
 
 const page = () => {
-
-  const authParam = new URLSearchParams({
-    client_id,
-    redirect_uri,
-    response_type
-  })
-
   return (
     <div className='login'>
       <Link href='/'>
@@ -27,9 +19,7 @@ const page = () => {
           <div className='naver'>
             <span className='text'>네이버로 시작</span>
           </div>
-          <div className='kakao'>
-            <Link href={`https://kauth.kakao.com/oauth/authorize?${authParam.toString()}`} className='text'>카카오톡으로 시작</Link>
-          </div>
+          <KakaoLogin />
 
           <div className='login__form'>
             <p className='title'>
