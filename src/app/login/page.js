@@ -4,10 +4,9 @@ import Link from 'next/link'
 const page = () => {
   return (
     <div className='login'>
-      <div className='logo'>
-        <span className='img'></span>
-        <Link href='/'>로고 클릭하면 Home으로 보내도록 해보자</Link>
-      </div>
+      <Link href='/'>
+        <div className='logo'></div>
+      </Link>
       <div className='login__container'>
         <div className='login__header'>
           <h3 className='title'>간편 로그인</h3>
@@ -21,7 +20,7 @@ const page = () => {
             <span className='text'>페이스북으로 시작</span>
           </div>
           <div className='insta'>
-            <span className='text'>인스타그램 추가예정</span>
+            <span className='text'>인스타그램으로 시작</span>
           </div>
 
           <div className='login__form'>
@@ -36,9 +35,12 @@ const page = () => {
           <div className='email'>
             <input className='checkbox' type='checkbox' />
             <span>이메일저장</span>
-            <a href='/'>이메일/비밀번호찾기</a>
+            <a href='/find'>이메일/비밀번호찾기</a>
           </div>
           <button type='button' className='loginbtn'>로그인</button>
+          <Link href='/signup'>
+            <button type='button' className='signupbtn'>회원가입</button>
+          </Link>
         </div>
       </div>
     </div>
