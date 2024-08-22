@@ -19,7 +19,7 @@ const page = () => {
           <div className='naver'>
             <span className='text'>네이버로 시작</span>
           </div>
-          <KakaoLogin />
+          {/* <KakaoLogin /> */}
 
           <div className='login__form'>
             <p className='title'>
