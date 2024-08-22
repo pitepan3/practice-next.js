@@ -4,13 +4,15 @@ import React from "react";
 import Header from "@/components/header/Header";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Map from "@/components/map/Map";
-import KakaoLogin from "@/components/kakaologin/KakaoLogin";
+import Login from "@/components/login/Login";
+import SignUp from "@/components/signup/SignUp";
 
 export default function Home() {
   return (
     <>
       <main id="main">
-        {/* <KakaoLogin /> */}
+        <Login />
+        <SignUp />
         <Header />
         <Sidebar />
         <Map />

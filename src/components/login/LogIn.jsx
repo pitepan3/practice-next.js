@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 import KakaoLogin from '@/components/kakaologin/KakaoLogin'
 
-const page = () => {
+const Login = () => {
   return (
     <div className='login'>
       <Link href='/'>
@@ -19,7 +19,7 @@ const page = () => {
           <div className='naver'>
             <span className='text'>네이버로 시작</span>
           </div>
-          {/* <KakaoLogin /> */}
+          <KakaoLogin />
 
           <div className='login__form'>
             <p className='title'>
@@ -45,4 +45,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Login

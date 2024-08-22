@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 
 const Header = () => {
   return (
@@ -14,8 +13,8 @@ const Header = () => {
       </ul>
 
       <ul className='header__login'>
-        <Link href="/login" id='loginBtn' className='item'>로그인</Link>
-        <Link href="/signup" id='signupBtn' className='item'>회원가입</Link>
+        <a id='loginBtn' className='item'>로그인</a>
+        <a id='signupBtn' className='item'>회원가입</a>
       </ul>
     </div>
   )

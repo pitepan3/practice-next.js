@@ -110,6 +110,8 @@ img {
   --mainKor-font: "nanumSquareNeo";
   --mainNum-font: "gmarket";
 
+  --modalBg-color: rgba(224, 224, 224, 0.5);
+
   --mainBg-color: #e0e0e0;
   --subBg100: #cdc0b1;
   --subBg200: #afa395;
@@ -289,11 +291,17 @@ img {
 // ========== login ==========
 
 .login {
-  background-color: var(--mainBg-color);
-  height: 100vh;
+  background-color: var(--modalBg-color);
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  display: none;
 
   .logo {
     background-image: url(../../public/favicon.ico);
@@ -466,11 +474,17 @@ img {
 // ========== signup ==========
 
 .signup {
-  background-color: var(--mainBg-color);
-  height: 100vh;
+  background-color: var(--modalBg-color);
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  display: none;
 
   .logo {
     background-image: url(../../public/favicon.ico);
