@@ -4,9 +4,9 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 import KakaoLogin from '@/components/kakaologin/KakaoLogin'
 
-const Login = () => {
+const Login = ({ isLoginVisible }) => {
   return (
-    <div className='login'>
+    <div className={`login ${isLoginVisible ? 'visible' : ''}`}>
       <Link href='/'>
         <div className='logo'></div>
       </Link>

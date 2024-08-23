@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function SignUp() {
+export default function SignUp({ isSignupVisible }) {
   return (
-    <div className='signup'>
+    <div className={`signup ${isSignupVisible ? 'visible' : ''}`}>
       <Link href='/'>
         <div className='logo'></div>
       </Link>

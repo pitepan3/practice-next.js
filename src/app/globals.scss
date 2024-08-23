@@ -290,6 +290,10 @@ img {
 // ========== map ==========
 // ========== login ==========
 
+.login.visible {
+  display: block;
+}
+
 .login {
   background-color: var(--modalBg-color);
   width: 100%;
@@ -472,6 +476,10 @@ img {
 
 // ========== login ==========
 // ========== signup ==========
+
+.signup.visible {
+  display: block;
+}
 
 .signup {
   background-color: var(--modalBg-color);
