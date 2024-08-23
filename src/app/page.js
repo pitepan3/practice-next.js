@@ -10,21 +10,29 @@ import SignUp from "@/components/signup/Signup";
 export default function Home() {
   const [isLoginVisible, setLoginVisible] = useState(false);
   const [isSignupVisible, setSignupVisible] = useState(false);
-  
-  const toggleLogin = () => {
+
+  const showLogin = () => {
     setLoginVisible(!isLoginVisible);
   }
 
-  const toggleSignup = () => {
+  const showSignup = () => {
     setSignupVisible(!isSignupVisible);
   }
 
   return (
     <>
       <main id="main">
-        <Header toggleLogin={toggleLogin} toggleSignup={toggleSignup} />
-        <Login isLoginVisible={isLoginVisible} />
-        <SignUp isSignupVisible={isSignupVisible} />
+        <Header
+          showLogin={showLogin} showSignup={showSignup}
+        />
+        <Login
+          isLoginVisible={isLoginVisible}
+          onClose={() => setLoginVisible(false)}
+        />
+        <SignUp
+          isSignupVisible={isSignupVisible}
+          onClose={() => setSignupVisible(false)}
+        />
         <Sidebar />
         <Map />
       </main>

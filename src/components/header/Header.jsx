@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Header = ({ toggleLogin, toggleSignup }) => {
+const Header = ({ showLogin, showSignup }) => {
   return (
     <div className='header'>
       <div className='header__logo'></div>
@@ -13,8 +13,8 @@ const Header = ({ toggleLogin, toggleSignup }) => {
       </ul>
 
       <ul className='header__login'>
-        <a onClick={toggleLogin} id='loginBtn' className='item'>로그인</a>
-        <a onClick={toggleSignup} id='signupBtn' className='item'>회원가입</a>
+        <a onClick={showLogin} id='loginBtn' className='item'>로그인</a>
+        <a onClick={showSignup} id='signupBtn' className='item'>회원가입</a>
       </ul>
     </div>
   )

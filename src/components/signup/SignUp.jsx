@@ -1,15 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function SignUp({ isSignupVisible }) {
+export default function SignUp({ isSignupVisible, onClose }) {
   return (
     <div className={`signup ${isSignupVisible ? 'visible' : ''}`}>
-      <Link href='/'>
-        <div className='logo'></div>
-      </Link>
       <div className='signup__container'>
         <div className='signup__header'>
           <h3 className='title'>개인회원 가입을 환영합니다!</h3>
+          <a className='closeBtn' onClick={onClose}></a>
         </div>
 
         <div className='signup__main'>

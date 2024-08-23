@@ -1,18 +1,16 @@
 "use client"
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import KakaoLogin from '@/components/kakaologin/KakaoLogin'
 
-const Login = ({ isLoginVisible }) => {
+const Login = ({ isLoginVisible, onClose }) => {
   return (
     <div className={`login ${isLoginVisible ? 'visible' : ''}`}>
-      <Link href='/'>
-        <div className='logo'></div>
-      </Link>
       <div className='login__container'>
         <div className='login__header'>
           <h3 className='title'>간편 로그인</h3>
+          <a className='closeBtn' onClick={onClose}></a>
         </div>
 
         <div className='login__main'>
