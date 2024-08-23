@@ -203,16 +203,26 @@ img {
     gap: 20px;
     cursor: pointer;
 
-    .item {
+    .loginBtn {
+      border-right: 1px solid black;
+      padding-right: 18px;
 
       &:hover {
         font-weight: 900;
       }
+    }
 
-      &:first-child {
-        border-right: 1px solid black;
-        padding-right: 18px;
+    .logoutBtn {
+      border-right: 1px solid black;
+      padding-right: 18px;
+
+      &:hover {
+        font-weight: 900;
       }
+    }
+
+    .signupBtn:hover {
+      font-weight: 900;
     }
   }
 
