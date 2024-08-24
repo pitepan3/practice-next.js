@@ -5,6 +5,7 @@ import Link from 'next/link'
 import KakaoLogin from '@/components/kakaologin/KakaoLogin'
 
 const Login = ({ isLoginVisible, onClose }) => {
+
   return (
     <div className={`login ${isLoginVisible ? 'visible' : ''}`}>
       <div className='login__container'>

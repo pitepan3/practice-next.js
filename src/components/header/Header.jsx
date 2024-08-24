@@ -1,20 +1,7 @@
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-const Header = ({ showLogin, showSignup }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem('access_token');
-    setIsLoggedIn(token);
-  }, [])
-
-
-  // 로컬스토리지에 회원 토큰 삭제
-  const handleLogout = () => {
-    localStorage.removeItem('access_token');
-    setIsLoggedIn(false);
-  }
+const Header = ({ isLoggedIn, showLogin, showSignup, handleLogout }) => {
 
   const logoutParam = new URLSearchParams({
     client_id: '32a92ed3ece50a34d8287d91e7fbce9e',

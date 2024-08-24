@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React, { useEffect } from 'react'
 
 
-const KakaoLogin = () => {
+const KakaoLogin = ({ onLoginSuccess }) => {
 
   useEffect(() => {
     // Redirect_URI로 인가코드 전달받은 코드
@@ -29,6 +29,10 @@ const KakaoLogin = () => {
     } = await getToken();
 
     localStorage.setItem('access_token', access_token)
+
+    if (onLoginSuccess) {
+      onLoginSuccess();
+    }
   }
 
   const authParam = new URLSearchParams({
