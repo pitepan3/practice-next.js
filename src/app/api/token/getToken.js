@@ -10,7 +10,7 @@ export const getToken = async () => {
 
   const param = new URLSearchParams({
     grant_type: 'authorization_code',
-    client_id: '32a92ed3ece50a34d8287d91e7fbce9e',
+    client_id: '32a92ed3ece50a34d8287d91e7fbce9es',
     redirect_uri: 'http://localhost:3000/',
     code
   })

@@ -42,7 +42,7 @@ const Login = ({ isLoginVisible, onClose, onLoginSuccess }) => {
 
   const authParam = new URLSearchParams({
     client_id: '32a92ed3ece50a34d8287d91e7fbce9e',
-    redirect_uri: 'http://localhost:3000/',
+    redirect_uri: `http://localhost:3000/`,
     response_type: 'code'
   })
 
