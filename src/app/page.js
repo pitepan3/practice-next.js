@@ -7,6 +7,7 @@ import Map from "@/components/map/Map";
 import Login from "@/components/login/Login";
 import SignUp from "@/components/signup/Signup";
 import KakaoLogin from "@/components/kakaologin/KakaoLogin";
+import NaverLogin from "@/components/naverlogin/NaverLogin";
 
 export default function Home() {
   const [isLoginVisible, setLoginVisible] = useState(false);
@@ -43,7 +44,9 @@ export default function Home() {
           isLoginVisible={isLoginVisible}
           onClose={() => setLoginVisible(false)}
           onSuccess={handleLoginSuccess} // 로그인 성공 시 호출할 함수 전달
-        />
+          onLoginSuccess={handleLoginSuccess}
+        >
+        </Login>
         <Header
           isLoggedIn={isLoggedIn} // 로그인 상태 전달
           showLogin={showLogin}
@@ -56,7 +59,6 @@ export default function Home() {
         />
         <Sidebar />
         <Map />
-        <KakaoLogin onLoginSuccess={handleLoginSuccess} />
       </main>
     </>
   )
