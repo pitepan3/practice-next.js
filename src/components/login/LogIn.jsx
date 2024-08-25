@@ -8,6 +8,8 @@ import { getToken } from '@/app/api/token/getToken'
 const Login = ({ isLoginVisible, onClose, onLoginSuccess }) => {
 
   // ==================== KakaoLogin ====================
+
+
   useEffect(() => {
     // Redirect_URI로 인가코드 전달받은 코드
     const search = new URLSearchParams(window.location.search);
@@ -44,6 +46,7 @@ const Login = ({ isLoginVisible, onClose, onLoginSuccess }) => {
     response_type: 'code'
   })
 
+  
   // ==================== KakaoLogin ====================
 
   return (

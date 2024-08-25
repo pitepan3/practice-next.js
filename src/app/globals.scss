@@ -318,7 +318,6 @@ img {
   .login__container {
     background-color: var(--white);
     width: 500px;
-    height: 400px;
     margin: auto;
     padding: 40px;
     border-radius: 10px;
@@ -334,6 +333,7 @@ img {
 
       .title {
         font-weight: 900;
+        font-size: 20px;
       }
 
       .closeBtn {
@@ -346,68 +346,68 @@ img {
         cursor: pointer;
       }
     }
+
+    .login__main {
+      font-size: 24px;
+
+      .naver {
+        background-color: var(--green);
+        color: var(--white);
+        display: flex;
+        padding: 16px;
+        border-radius: 12px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        margin-bottom: 16px;
+
+        .text {
+          font-weight: 900;
+
+          &::before {
+            content: '';
+            background-image: url(../../public/naver.PNG);
+            background-size: cover;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            left: 12px;
+          }
+        }
+      }
+
+      .kakao {
+        background-color: var(--yellow);
+        color: var(--white);
+        display: flex;
+        padding: 16px;
+        border-radius: 12px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        margin-bottom: 16px;
+
+        .text {
+          font-weight: 900;
+
+          &::before {
+            content: '';
+            background-image: url(../../public/kakao-talk.png);
+            background-size: cover;
+            width: 36px;
+            height: 36px;
+            position: absolute;
+            left: 12px;
+          }
+        }
+      }
+    }
   }
 }
 
 // ========== login ==========
-// ========== Kakao, Naver login ==========
-
-.naver {
-  background-color: var(--green);
-  color: var(--white);
-  display: flex;
-  padding: 16px;
-  border-radius: 12px;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  margin-bottom: 16px;
-
-  .text {
-    font-weight: 900;
-
-    &::before {
-      content: '';
-      background-image: url(../../public/naver.PNG);
-      background-size: cover;
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      left: 12px;
-    }
-  }
-}
-
-.kakao {
-  background-color: var(--yellow);
-  color: var(--white);
-  display: flex;
-  padding: 16px;
-  border-radius: 12px;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  margin-bottom: 16px;
-  height: 56px;
-
-  .text {
-    font-weight: 900;
-
-    &::before {
-      content: '';
-      background-image: url(../../public/kakao-talk.png);
-      background-size: cover;
-      width: 28px;
-      height: 28px;
-      position: absolute;
-      left: 12px;
-    }
-  }
-}
-
-// ========== Kakao, Naver login ==========
 // ========== signup ==========
 
 .signup.visible {
@@ -428,7 +428,7 @@ img {
   .signup__container {
     background-color: var(--white);
     width: 560px;
-    margin: 200px auto auto auto;
+    margin: auto;
     padding: 40px;
     border-radius: 10px;
 

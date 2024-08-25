@@ -6,8 +6,6 @@ import Sidebar from "@/components/sidebar/Sidebar";
 import Map from "@/components/map/Map";
 import Login from "@/components/login/Login";
 import SignUp from "@/components/signup/Signup";
-import KakaoLogin from "@/components/kakaologin/KakaoLogin";
-import NaverLogin from "@/components/naverlogin/NaverLogin";
 
 export default function Home() {
   const [isLoginVisible, setLoginVisible] = useState(false);
