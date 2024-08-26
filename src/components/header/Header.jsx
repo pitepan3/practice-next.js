@@ -1,12 +1,7 @@
-import Link from 'next/link'
 import React from 'react'
+import { signOut } from 'next-auth/react'
 
-const Header = ({ isLoggedIn, showLogin, showSignup, handleLogout }) => {
-
-  const logoutParam = new URLSearchParams({
-    client_id: '32a92ed3ece50a34d8287d91e7fbce9e',
-    logout_redirect_uri: 'http://localhost:3000'
-  })
+const Header = ({ isLoggedIn, showLogin, showSignup }) => {
 
   return (
     <div className='header'>
@@ -22,13 +17,12 @@ const Header = ({ isLoggedIn, showLogin, showSignup, handleLogout }) => {
       <ul className='header__login'>
         {isLoggedIn ? (
           <>
-            <Link
+            <button
+              onClick={() => signOut()}
               className='logoutBtn'
-              href={`https://kauth.kakao.com/oauth/logout?${logoutParam.toString()}`}
-              onClick={handleLogout}
             >
               로그아웃
-            </Link>
+            </button>
             <a onClick={showSignup} className='signupBtn'>회원가입</a>
 
           </>

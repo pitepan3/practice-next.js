@@ -12,10 +12,10 @@ export default function SignUp({ isSignupVisible, onClose }) {
 
         <div className='signup__main'>
           <div className='naver'>
-            <span className='text'>네이버 가입</span>
+            <button className='text'>네이버 가입</button>
           </div>
           <Link href='https://accounts.kakao.com/weblogin/create_account/?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A3000%252Flogin_kakao%26through_account%3Dtrue%26client_id%3D32a92ed3ece50a34d8287d91e7fbce9e&lang=ko#selectVerifyMethod' className='kakao'>
-            <span className='text'>카카오톡 가입</span>
+            <button className='text'>카카오톡 가입</button>
           </Link>
         </div>
       </div>

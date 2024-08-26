@@ -1,4 +1,5 @@
 import "./globals.scss";
+import { SessionProvider } from "@/components/provider/SessionProvider";
 
 export const metadata = {
   title: "Hoon",
@@ -9,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body>
-        {children}
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );

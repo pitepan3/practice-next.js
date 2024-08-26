@@ -348,7 +348,6 @@ img {
     }
 
     .login__main {
-      font-size: 24px;
 
       .naver {
         background-color: var(--green);
@@ -364,6 +363,10 @@ img {
 
         .text {
           font-weight: 900;
+          font-size: 24px;
+          background-color: inherit;
+          border: none;
+          color: var(--white);
 
           &::before {
             content: '';
@@ -391,6 +394,10 @@ img {
 
         .text {
           font-weight: 900;
+          font-size: 24px;
+          background-color: inherit;
+          border: none;
+          color: var(--white);
 
           &::before {
             content: '';
@@ -472,8 +479,11 @@ img {
         margin-bottom: 24px;
 
         .text {
-          font-weight: 800;
+          font-weight: 900;
           font-size: 24px;
+          background-color: inherit;
+          border: none;
+          color: var(--white);
 
           &::before {
             content: '';
@@ -501,8 +511,11 @@ img {
         margin-bottom: 24px;
 
         .text {
-          font-weight: 800;
+          font-weight: 900;
           font-size: 24px;
+          background-color: inherit;
+          border: none;
+          color: var(--white);
 
           &::before {
             content: '';
