@@ -7,7 +7,6 @@ import Sidebar from "@/components/sidebar/Sidebar";
 import Map from "@/components/map/Map";
 import Login from "@/components/login/Login";
 import SignUp from "@/components/signup/Signup";
-import Nav from "@/components/nav/Nav";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -24,6 +23,17 @@ export default function Home() {
     setSignupVisible(!isSignupVisible);
   }
   // ========== 로그인모달, 회원가입모달 ==========
+
+  // ========== sidebar ==========
+  const [isSidebarVisible, setSidebarVisible] = useState(false);
+  const showSidebar = () => {
+    setSidebarVisible(true)
+  }
+
+  const hideSidebar = () => {
+    setSidebarVisible(false)
+  }
+  // ========== sidebar ==========
 
 
   return (
@@ -43,8 +53,11 @@ export default function Home() {
           isSignupVisible={isSignupVisible}
           onClose={() => setSignupVisible(false)}
         />
-        <Sidebar />
-        <Nav />
+        <Sidebar 
+          isSidebarVisible={isSidebarVisible}
+          showSidebar={showSidebar}
+          hideSidebar={hideSidebar}
+        />
         <Map />
       </main>
     </>

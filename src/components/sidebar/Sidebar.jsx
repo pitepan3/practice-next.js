@@ -1,9 +1,18 @@
 import React from 'react'
 
-const Sidebar = () => {
+const Sidebar = ({ isSidebarVisible, showSidebar, hideSidebar }) => {
   return (
     <>
-      <div className="sidebar">
+      <div className='nav'>
+        <div className='nav__inner'>
+          <button onClick={showSidebar} className='item homeBtn' type='button'>홈</button>
+          <button onClick={hideSidebar} className='item mapBtn' type='button'>지도</button>
+          <button className='item' type='button'>우리집</button>
+          <button className='item' type='button'>btn</button>
+          <button className='item' type='button'>btn</button>
+        </div>
+      </div>
+      <div className={`sidebar ${isSidebarVisible ? 'visible' : ''}`}>
         <div className="sidebar__search">
           <input type='text' placeholder='검색어를 입력하세요'></input>
         </div>

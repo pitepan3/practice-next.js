@@ -11,7 +11,6 @@ const Header = ({ isLoggedIn, showLogin, showSignup }) => {
         <li className='item'>HOME</li>
         <li className='item'>실거래가조회</li>
         <li className='item'>실거래가조회</li>
-        <li className='item'>실거래가조회</li>
       </ul>
 
       <ul className='header__login'>
