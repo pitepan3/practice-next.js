@@ -307,6 +307,7 @@ img {
   z-index: 999;
 
   .nav__inner {
+    padding: 10px;
 
     &:first-child {
       margin-top: 20px;
@@ -320,20 +321,19 @@ img {
       background-color: inherit;
       font-size: 16px;
       cursor: pointer;
+      border-radius: 8px;
 
       &:hover {
         font-weight: 900;
+        background-color: var(--mainBg-color);
+        transition: all .2s;
       }
     }
-
-    .homeBtn {}
   }
 
   @media (max-width: 800px) {
     top: 134px;
   }
-
-  .nav__inner {}
 }
 
 // ========== sidebar ==========

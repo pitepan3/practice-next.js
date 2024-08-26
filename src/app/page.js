@@ -26,12 +26,24 @@ export default function Home() {
 
   // ========== sidebar ==========
   const [isSidebarVisible, setSidebarVisible] = useState(false);
+  const [sidebarContent, setSidebarContent] = useState('default');
+
   const showSidebar = () => {
     setSidebarVisible(true)
   }
 
   const hideSidebar = () => {
     setSidebarVisible(false)
+  }
+
+  const handleHomeClick = () => {
+    setSidebarContent('home');
+    showSidebar();
+  }
+
+  const handleMyHouseClick = () => {
+    setSidebarContent('myHouse');
+    showSidebar();
   }
   // ========== sidebar ==========
 
@@ -57,6 +69,8 @@ export default function Home() {
           isSidebarVisible={isSidebarVisible}
           showSidebar={showSidebar}
           hideSidebar={hideSidebar}
+          content={sidebarContent}
+          setSidebarContent={setSidebarContent}
         />
         <Map />
       </main>
