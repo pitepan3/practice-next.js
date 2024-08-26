@@ -29,20 +29,25 @@ export default function Home() {
   const [sidebarContent, setSidebarContent] = useState('default');
 
   const showSidebar = () => {
-    setSidebarVisible(true)
+    setSidebarVisible(true);
   }
 
   const hideSidebar = () => {
-    setSidebarVisible(false)
-  }
-
-  const handleHomeClick = () => {
-    setSidebarContent('home');
-    showSidebar();
+    setSidebarVisible(false);
   }
 
   const handleMyHouseClick = () => {
     setSidebarContent('myHouse');
+    showSidebar();
+  }
+
+  const findRealPrices = () => {
+    setSidebarContent('findRealPrices');
+    showSidebar();
+  }
+
+  const estateProperty = () => {
+    setSidebarContent('estateProperty');
     showSidebar();
   }
   // ========== sidebar ==========

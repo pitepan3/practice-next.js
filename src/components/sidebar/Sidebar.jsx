@@ -1,16 +1,18 @@
 import React from 'react';
 
 const Sidebar = ({ isSidebarVisible, showSidebar, hideSidebar, content, setSidebarContent }) => {
+
+
   return (
     <>
       <div className='nav'>
         <div className='nav__inner'>
           <button onClick={() => { showSidebar(); setSidebarContent('default'); }}
-            className='item homeBtn' type='button'>홈</button>
-          <button onClick={hideSidebar} className='item mapBtn' type='button'>지도</button>
+            className='item' type='button'>검색</button>
+          <button onClick={hideSidebar} className='item' type='button'>지도</button>
           <button onClick={() => { showSidebar(); setSidebarContent('myHouse'); }} className='item' type='button'>우리집</button>
-          <button className='item' type='button'>btn</button>
-          <button className='item' type='button'>btn</button>
+          <button onClick={() => { showSidebar(); setSidebarContent('findRealPrices'); }} className='item' type='button'>실거래가조회</button>
+          <button onClick={() => { showSidebar(); setSidebarContent('estateProperty'); }} className='item' type='button'>매물</button>
         </div>
       </div>
       <div className={`sidebar ${isSidebarVisible ? 'visible' : ''}`}>
@@ -40,8 +42,23 @@ const Sidebar = ({ isSidebarVisible, showSidebar, hideSidebar, content, setSideb
         )}
         {content === 'myHouse' && (
           <div className="sidebar__myHouse">
-            <h2>우리집</h2>
-            {/* 우리집 관련 콘텐츠 */}
+            <div className='userName'>
+              myHouse
+            </div>
+          </div>
+        )}
+        {content === 'findRealPrices' && (
+          <div className="sidebar__findRealPrices">
+            <div className='userName'>
+              findRealPrices
+            </div>
+          </div>
+        )}
+        {content === 'estateProperty' && (
+          <div className="sidebar__estateProperty">
+            <div className='userName'>
+              estateProperty
+            </div>
           </div>
         )}
       </div>

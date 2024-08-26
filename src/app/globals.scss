@@ -293,6 +293,12 @@ img {
   @media (max-width: 800px) {
     top: 134px;
   }
+
+  .sidebar__myHouse {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .nav {
@@ -339,11 +345,23 @@ img {
 // ========== sidebar ==========
 // ========== map ==========
 
-#map {
-  height: calc(100vh - 74px);
+.kakao__map {
+  position: relative;
 
-  @media (max-width: 800px) {
-    height: calc(100vh - 134px);
+  .kakao__map__input {
+    position: absolute;
+    z-index: 99;
+    top: 20px;
+    left: 120px;
+  }
+
+
+  #map {
+    height: calc(100vh - 74px);
+
+    @media (max-width: 800px) {
+      height: calc(100vh - 134px);
+    }
   }
 }
 

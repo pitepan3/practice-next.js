@@ -8,9 +8,7 @@ const Header = ({ isLoggedIn, showLogin, showSignup }) => {
       <div className='header__logo'></div>
 
       <ul className='header__menu'>
-        <li className='item'>HOME</li>
-        <li className='item'>실거래가조회</li>
-        <li className='item'>실거래가조회</li>
+        <li className='item'>Project Name</li>
       </ul>
 
       <ul className='header__login'>
