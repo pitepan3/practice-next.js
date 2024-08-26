@@ -5,7 +5,7 @@ const Sidebar = ({ isSidebarVisible, showSidebar, hideSidebar, content, setSideb
 
   return (
     <>
-      <div className='nav'>
+      <section className='nav'>
         <div className='nav__inner'>
           <button onClick={() => { showSidebar(); setSidebarContent('default'); }}
             className='item' type='button'>검색</button>
@@ -14,8 +14,8 @@ const Sidebar = ({ isSidebarVisible, showSidebar, hideSidebar, content, setSideb
           <button onClick={() => { showSidebar(); setSidebarContent('findRealPrices'); }} className='item' type='button'>실거래가조회</button>
           <button onClick={() => { showSidebar(); setSidebarContent('estateProperty'); }} className='item' type='button'>매물</button>
         </div>
-      </div>
-      <div className={`sidebar ${isSidebarVisible ? 'visible' : ''}`}>
+      </section>
+      <section className={`sidebar ${isSidebarVisible ? 'visible' : ''}`}>
         {content === 'default' && (
           <div className="sidebar__search">
             <input type='text' placeholder='검색어를 입력하세요'></input>
@@ -61,7 +61,7 @@ const Sidebar = ({ isSidebarVisible, showSidebar, hideSidebar, content, setSideb
             </div>
           </div>
         )}
-      </div>
+      </section>
     </>
   );
 };

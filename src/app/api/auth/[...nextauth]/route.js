@@ -9,7 +9,7 @@ const handler = NextAuth({
       clientSecret: process.env.NAVER_CLIENT_SECRET,
     }),
     KakaoProvider({
-      clientId: process.env.KAKAO_CLIENT_ID,
+      clientId: process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID,
       clientSecret: process.env.KAKAO_CLIENT_SECRET,
     }),
   ],

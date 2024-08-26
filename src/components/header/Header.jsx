@@ -1,17 +1,18 @@
 import React from 'react'
 import { signOut } from 'next-auth/react'
+import Link from 'next/link'
 
 const Header = ({ isLoggedIn, showLogin, showSignup }) => {
 
   return (
-    <div className='header'>
-      <div className='header__logo'></div>
+    <section className='header'>
+      <span className='header__logo'></span>
 
-      <ul className='header__menu'>
-        <li className='item'>Project Name</li>
-      </ul>
+      <div className='header__menu'>
+        <Link href={'/'} className='item'>Project Name</Link>
+      </div>
 
-      <ul className='header__login'>
+      <div className='header__login'>
         {isLoggedIn ? (
           <>
             <button
@@ -29,8 +30,8 @@ const Header = ({ isLoggedIn, showLogin, showSignup }) => {
             <a onClick={showSignup} className='signupBtn'>회원가입</a>
           </>
         )}
-      </ul>
-    </div>
+      </div>
+    </section>
   )
 }
 

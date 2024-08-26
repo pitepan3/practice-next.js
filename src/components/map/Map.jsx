@@ -1,78 +1,80 @@
-"use client"
-import React, { useEffect, useState } from 'react';
+import { useEffect } from "react";
 
 const Map = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [map, setMap] = useState(null);  // 맵 객체를 상태로 관리
-  const [markers, setMarkers] = useState([]);  // 마커를 상태로 관리
-
   useEffect(() => {
-    const mapScript = document.createElement('script');
+    // 카카오 지도 스크립트 로드
+    const kakaoMapScript = document.createElement('script');
+    kakaoMapScript.async = false;
+    kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&autoload=false`;
+    document.head.appendChild(kakaoMapScript);
 
-    mapScript.async = true;
-    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=1bbb5e8ed53d349d0ca4ba70a05cf619&autoload=false`;
-
-    document.head.appendChild(mapScript);
-
-    const onLoadKakaoMap = () => {
+    const onLoadKakaoAPI = () => {
       window.kakao.maps.load(() => {
-        const mapContainer = document.getElementById('map');
-        const mapOption = {
+        const container = document.getElementById('map');
+        const options = {
           center: new window.kakao.maps.LatLng(33.450701, 126.570667),
           level: 3,
         };
-        const kakaoMap = new window.kakao.maps.Map(mapContainer, mapOption);
-        setMap(kakaoMap); // 맵 객체 저장
+
+        const map = new window.kakao.maps.Map(container, options);
+
+        // 지도 타입 컨트롤 생성
+        const mapTypeControl = new window.kakao.maps.MapTypeControl();
+        map.addControl(mapTypeControl, window.kakao.maps.ControlPosition.TOPRIGHT);
+
+        // 줌 컨트롤 생성
+        const zoomControl = new window.kakao.maps.ZoomControl();
+        map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
+
+        // 여러 마커 추가
+        const properties = [
+          { lat: 33.450701, lng: 126.570667, info: '매물 1' },
+        ];
+
+        const markers = properties.map(property => {
+          const marker = new window.kakao.maps.Marker({
+            position: new window.kakao.maps.LatLng(property.lat, property.lng),
+            map: map,
+          });
+
+          const infowindow = new window.kakao.maps.InfoWindow({
+            content: `<div style="padding:5px;">${property.info}</div>`,
+          });
+
+          window.kakao.maps.event.addListener(marker, 'click', () => {
+            infowindow.open(map, marker);
+          });
+
+          return marker;
+        });
+
+        // 지도 클릭 시 마커 이동 및 위도, 경도 표시
+        const mapClickListener = (mouseEvent) => {
+          const latlng = mouseEvent.latLng;
+
+          // 마지막 마커의 위치를 클릭한 위치로 이동
+          if (markers.length > 0) {
+            markers[0].setPosition(latlng);
+          }
+
+          const message = `클릭한 위치의 위도는 ${latlng.getLat()} 이고, 경도는 ${latlng.getLng()} 입니다`;
+          const resultDiv = document.getElementById('clickLatlng');
+          resultDiv.innerHTML = message;
+        };
+
+        window.kakao.maps.event.addListener(map, 'click', mapClickListener);
       });
     };
 
-    mapScript.addEventListener('load', onLoadKakaoMap);
+    kakaoMapScript.addEventListener('load', onLoadKakaoAPI);
   }, []);
 
-  useEffect(() => {
-    if (map) {
-      // 기존 마커 제거
-      markers.forEach(marker => marker.setMap(null));
-
-      // 매물 데이터
-      const properties = [
-        { lat: 33.450701, lng: 126.570667, info: '매물 1' },
-        { lat: 33.451701, lng: 126.571667, info: '매물 2' },
-      ];
-
-      const filteredProperties = properties.filter(property =>
-        property.info.includes(searchTerm)
-      );
-
-      const newMarkers = filteredProperties.map(property => {
-        const marker = new window.kakao.maps.Marker({
-          position: new window.kakao.maps.LatLng(property.lat, property.lng),
-          map: map,
-        });
-
-        window.kakao.maps.event.addListener(marker, 'click', function () {
-          alert(property.info);
-        });
-
-        return marker;
-      });
-
-      setMarkers(newMarkers); // 새 마커 저장
-    }
-  }, [map, searchTerm]);
-
   return (
-    <div className='kakao__map'>
-      <input
-        className='kakao__map__input'
-        type="text"
-        placeholder="검색어 입력"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
+    <section className="kakao__map">
       <div id="map"></div>
-    </div>
+      <div id="clickLatlng"></div>
+    </section>
   );
-}
+};
 
 export default Map;

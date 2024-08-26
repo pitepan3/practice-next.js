@@ -339,6 +339,7 @@ img {
 
   @media (max-width: 800px) {
     top: 134px;
+    height: calc(100% - 134px);
   }
 }
 
@@ -348,20 +349,19 @@ img {
 .kakao__map {
   position: relative;
 
-  .kakao__map__input {
-    position: absolute;
-    z-index: 99;
-    top: 20px;
-    left: 120px;
-  }
-
-
   #map {
     height: calc(100vh - 74px);
 
     @media (max-width: 800px) {
       height: calc(100vh - 134px);
     }
+  }
+
+  #clickLatlng {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
   }
 }
 

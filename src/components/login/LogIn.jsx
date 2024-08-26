@@ -7,7 +7,7 @@ const Login = ({ isLoginVisible, onClose }) => {
   const { data: session } = useSession();
 
   return (
-    <div className={`login ${isLoginVisible ? 'visible' : ''}`}>
+    <section className={`login ${isLoginVisible ? 'visible' : ''}`}>
       <div className='login__container'>
         <div className='login__header'>
           <h3 className='title'>간편 로그인</h3>
@@ -22,7 +22,7 @@ const Login = ({ isLoginVisible, onClose }) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
