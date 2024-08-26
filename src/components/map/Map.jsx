@@ -25,7 +25,7 @@ const Map = () => {
 
   return (
     <div>
-      <div id="map" className="w-96 h-96"></div>
+      <div id="map"></div>
     </div>
   );
 }

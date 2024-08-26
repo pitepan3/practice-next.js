@@ -7,6 +7,7 @@ import Sidebar from "@/components/sidebar/Sidebar";
 import Map from "@/components/map/Map";
 import Login from "@/components/login/Login";
 import SignUp from "@/components/signup/Signup";
+import Nav from "@/components/nav/Nav";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -43,6 +44,7 @@ export default function Home() {
           onClose={() => setSignupVisible(false)}
         />
         <Sidebar />
+        <Nav />
         <Map />
       </main>
     </>
