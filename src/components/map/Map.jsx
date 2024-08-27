@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const Map = () => {
+const Map = ({ properties }) => {
   useEffect(() => {
     // 카카오 지도 스크립트 로드
     const kakaoMapScript = document.createElement('script');
@@ -26,12 +26,13 @@ const Map = () => {
         const zoomControl = new window.kakao.maps.ZoomControl();
         map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
 
-        // 여러 마커 추가
-        const properties = [
-          { lat: 33.450701, lng: 126.570667, info: '매물 1' },
-        ];
+        // 기존 마커 제거
+        if (window.currentMarkers) {
+          window.currentMarkers.forEach(marker => marker.setMap(null));
+        }
 
-        const markers = properties.map(property => {
+        // 새로운 마커 추가
+        const newMarkers = properties.map(property => {
           const marker = new window.kakao.maps.Marker({
             position: new window.kakao.maps.LatLng(property.lat, property.lng),
             map: map,
@@ -48,26 +49,21 @@ const Map = () => {
           return marker;
         });
 
-        // 지도 클릭 시 마커 이동 및 위도, 경도 표시
-        const mapClickListener = (mouseEvent) => {
-          const latlng = mouseEvent.latLng;
-
-          // 마지막 마커의 위치를 클릭한 위치로 이동
-          if (markers.length > 0) {
-            markers[0].setPosition(latlng);
-          }
-
-          const message = `클릭한 위치의 위도는 ${latlng.getLat()} 이고, 경도는 ${latlng.getLng()} 입니다`;
-          const resultDiv = document.getElementById('clickLatlng');
-          resultDiv.innerHTML = message;
-        };
-
-        window.kakao.maps.event.addListener(map, 'click', mapClickListener);
+        // 현재 마커 목록을 window 객체에 저장
+        window.currentMarkers = newMarkers;
       });
     };
 
     kakaoMapScript.addEventListener('load', onLoadKakaoAPI);
-  }, []);
+
+    // Cleanup function to remove script when component unmounts
+    return () => {
+      kakaoMapScript.removeEventListener('load', onLoadKakaoAPI);
+      if (window.currentMarkers) {
+        window.currentMarkers.forEach(marker => marker.setMap(null));
+      }
+    };
+  }, [properties]); // properties가 변경될 때마다 useEffect 실행
 
   return (
     <section className="kakao__map">

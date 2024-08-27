@@ -263,6 +263,10 @@ img {
     display: flex;
     flex-direction: column;
 
+    .searchBtn {
+      display: none;
+    }
+
 
     input {
       height: 40px;

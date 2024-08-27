@@ -1,6 +1,21 @@
 import React from 'react';
 
-const Sidebar = ({ isSidebarVisible, showSidebar, hideSidebar, content, setSidebarContent }) => {
+const Sidebar = ({
+  isSidebarVisible,
+  showSidebar,
+  hideSidebar,
+  content,
+  setSidebarContent,
+  searchQuery,
+  setSearchQuery,
+  handleSearch
+}) => {
+
+  const handleKeyDown = (e) => {
+    if(e.key === 'Enter') {
+      handleSearch()
+    }
+  }
 
 
   return (
@@ -18,7 +33,14 @@ const Sidebar = ({ isSidebarVisible, showSidebar, hideSidebar, content, setSideb
       <section className={`sidebar ${isSidebarVisible ? 'visible' : ''}`}>
         {content === 'default' && (
           <div className="sidebar__search">
-            <input type='text' placeholder='검색어를 입력하세요'></input>
+            <input
+              type='text'
+              placeholder='검색어를 입력하세요'
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+            <button className='searchBtn' onClick={handleSearch}></button>
             <div className="sidebar__area">
               <span>경기도</span>
               <span>강원도</span>
