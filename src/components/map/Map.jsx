@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect } from "react";
 
 const Map = ({ properties }) => {
@@ -26,13 +28,16 @@ const Map = ({ properties }) => {
         const zoomControl = new window.kakao.maps.ZoomControl();
         map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
 
+        // 마커 관리
+        const markers = [];
+
         // 기존 마커 제거
         if (window.currentMarkers) {
           window.currentMarkers.forEach(marker => marker.setMap(null));
         }
 
         // 새로운 마커 추가
-        const newMarkers = properties.map(property => {
+        properties.forEach(property => {
           const marker = new window.kakao.maps.Marker({
             position: new window.kakao.maps.LatLng(property.lat, property.lng),
             map: map,
@@ -46,29 +51,28 @@ const Map = ({ properties }) => {
             infowindow.open(map, marker);
           });
 
-          return marker;
+          markers.push(marker);
         });
 
         // 현재 마커 목록을 window 객체에 저장
-        window.currentMarkers = newMarkers;
+        window.currentMarkers = markers;
       });
     };
 
     kakaoMapScript.addEventListener('load', onLoadKakaoAPI);
 
-    // Cleanup function to remove script when component unmounts
+    // Cleanup function to remove script and markers when component unmounts
     return () => {
       kakaoMapScript.removeEventListener('load', onLoadKakaoAPI);
       if (window.currentMarkers) {
         window.currentMarkers.forEach(marker => marker.setMap(null));
       }
     };
-  }, [properties]); // properties가 변경될 때마다 useEffect 실행
+  }, [properties]);
 
   return (
     <section className="kakao__map">
       <div id="map"></div>
-      <div id="clickLatlng"></div>
     </section>
   );
 };

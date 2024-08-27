@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Header from "@/components/header/Header";
 import Sidebar from "@/components/sidebar/Sidebar";
@@ -54,25 +54,41 @@ export default function Home() {
   // ========== sidebar 검색관련 ==========
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProperties, setFilteredProperties] = useState([]);
-
-  const allProperties = [ // 임의의 매물 데이터 (실제 환경에서는 서버나 API 호출로 대체)
-    { lat: 33.450701, lng: 126.570667, info: "매물 1", price: 1000 },
-    { lat: 33.450936, lng: 126.569477, info: "매물 2", price: 1500 },
-    { lat: 33.450879, lng: 126.569940, info: "매물 3", price: 2000 },
-  ];
+  const [allProperties, setAllProperties] = useState([]);
 
   const handleSearch = () => { // 검색기능
     const results = allProperties.filter(
       (property) =>
         property.info.includes(searchQuery) ||
         property.price.toString().includes(searchQuery)
-    )
-    setFilteredProperties(results)
-  }
+    );
+    setFilteredProperties(results);
+  };
 
   // ========== sidebar 검색관련 ==========
 
   // ========== sidebar ==========
+
+  // 부동산 관련 공공데이터API
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch('/api/data/estate');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+    
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+  
+    fetchData();
+  }, []);
+  // 부동산 관련 공공데이터API
 
 
   return (
