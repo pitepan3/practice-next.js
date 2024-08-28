@@ -73,7 +73,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('/api/data/estate');
+        const response = await fetch('/api/estate');
         
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -81,6 +81,8 @@ export default function Home() {
     
         const data = await response.json();
         console.log(data);
+
+        // 데이터 가공
       } catch (error) {
         console.error('Error fetching data:', error);
       }

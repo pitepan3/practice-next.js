@@ -1,12 +1,5 @@
 import { NextResponse } from 'next/server';
-
-// 지역 코드 목록 (예시로 몇 개만 포함)
-const REGION_CODES = [
-  '11000', // 서울
-  '26000', // 부산
-  '27000', // 대구
-  // 필요한 만큼 추가
-];
+import { REGION_CODES } from '../data/region_codes.js';
 
 export async function GET(request) {
   const API_KEY = process.env.NEXT_PUBLIC_PUBLIC_RENTAL_HOUSE_KEY;
