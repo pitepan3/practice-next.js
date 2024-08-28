@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
-import getRealEstateTradingArea from './getRealEstateTradingArea';
-import getRealEstateTradingCount from './getRealEstateTradingCount';
-import getRealEstateTradingAreaResidence from './getRealEstateTradingAreaResidence';
-import getRealEstateTradingCountResidence from './getRealEstateTradingCountResidence';
-import getRealEstateTradingAreaBuildType from './getRealEstateTradingAreaBuildType';
-import getRealEstateTradingCountBuildType from './getRealEstateTradingCountBuildType';
-import getRealEstateTradingAreaDealer from './getRealEstateTradingAreaDealer';
-import getRealEstateTradingCountDealer from './getRealEstateTradingCountDealer';
+import getRealEstateTradingArea from './data/getRealEstateTradingArea';
+import getRealEstateTradingCount from './data/getRealEstateTradingCount';
+import getRealEstateTradingAreaResidence from './data/getRealEstateTradingAreaResidence';
+import getRealEstateTradingCountResidence from './data/getRealEstateTradingCountResidence';
+import getRealEstateTradingAreaBuildType from './data/getRealEstateTradingAreaBuildType';
+import getRealEstateTradingCountBuildType from './data/getRealEstateTradingCountBuildType';
+import getRealEstateTradingAreaDealer from './data/getRealEstateTradingAreaDealer';
+import getRealEstateTradingCountDealer from './data/getRealEstateTradingCountDealer';
 // 필요한 추가 API 호출 파일들을 import
 
 export async function GET(request) {
