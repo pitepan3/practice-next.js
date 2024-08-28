@@ -50,22 +50,7 @@ export default function Home() {
     setSidebarContent('estateProperty');
     showSidebar();
   }
-
-  // ========== sidebar 검색관련 ==========
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProperties, setFilteredProperties] = useState([]);
-  const [allProperties, setAllProperties] = useState([]);
-
-  const handleSearch = () => { // 검색기능
-    const results = allProperties.filter(
-      (property) =>
-        property.info.includes(searchQuery) ||
-        property.price.toString().includes(searchQuery)
-    );
-    setFilteredProperties(results);
-  };
-
-  // ========== sidebar 검색관련 ==========
+  // ========== sidebar ==========
 
   // ========== sidebar ==========
 
@@ -74,20 +59,19 @@ export default function Home() {
     async function fetchData() {
       try {
         const response = await fetch('/api/estate');
-        
+
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-    
+
         const data = await response.json();
         console.log(data);
 
-        // 데이터 가공
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
-  
+
     fetchData();
   }, []);
   // 부동산 관련 공공데이터API
@@ -116,11 +100,8 @@ export default function Home() {
           hideSidebar={hideSidebar}
           content={sidebarContent}
           setSidebarContent={setSidebarContent}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          handleSearch={handleSearch}
         />
-        <Map properties={filteredProperties} />
+        <Map />
       </main>
     </>
   )

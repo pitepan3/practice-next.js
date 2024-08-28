@@ -5,18 +5,8 @@ const Sidebar = ({
   showSidebar,
   hideSidebar,
   content,
-  setSidebarContent,
-  searchQuery,
-  setSearchQuery,
-  handleSearch
+  setSidebarContent
 }) => {
-
-  const handleKeyDown = (e) => {
-    if(e.key === 'Enter') {
-      handleSearch()
-    }
-  }
-
 
   return (
     <>
@@ -36,11 +26,8 @@ const Sidebar = ({
             <input
               type='text'
               placeholder='검색어를 입력하세요'
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
             />
-            <button className='searchBtn' onClick={handleSearch}></button>
+            <button className='searchBtn'></button>
             <div className="sidebar__area">
               <span>경기도</span>
               <span>강원도</span>
