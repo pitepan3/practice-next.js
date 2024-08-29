@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect } from "react";
+import { CETNER_COORDINATE } from "@/app/api/estate/data/region_codes";
 
-const Map = ({ properties, center }) => {
+const Map = () => {
   useEffect(() => {
     // 카카오 지도 스크립트 로드
     const kakaoMapScript = document.createElement('script');
@@ -27,11 +28,6 @@ const Map = ({ properties, center }) => {
         // 줌 컨트롤 생성
         const zoomControl = new window.kakao.maps.ZoomControl();
         map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
-
-        // center 좌표가 제공되면 지도를 해당 좌표로 이동
-        if (center) {
-          map.setCenter(new window.kakao.maps.LatLng(center.lat, center.lng));
-        }
       });
     };
     kakaoMapScript.addEventListener('load', onLoadKakaoAPI);
