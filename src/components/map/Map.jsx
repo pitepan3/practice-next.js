@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 
 const Map = () => {
   const [centerCoordinates, setCenterCoordinates] = useState({});
+  const [additionalInfo, setAdditionalInfo] = useState({});
   const mapRef = useRef(null);
   const markersRef = useRef([]);
   const infowindowRef = useRef(null); // infoWindow 참조를 위한 useRef
@@ -15,6 +16,17 @@ const Map = () => {
         const response = await fetch('/api/estate'); // API 경로를 올바르게 설정
         const data = await response.json();
         setCenterCoordinates(data.centerCoordinate); // 중심 좌표 데이터 설정
+        setAdditionalInfo({
+          areaData: data.areaData,
+          countData: data.countData,
+          areaResidenceData: data.residenceData,
+          CountResidenceData: data.countResidenceData,
+          areaBuildTypeData: data.areaBuildTypeData,
+          countBuildTypeData: data.countBuildTypeData,
+          areaDealerData: data.areaDealerData,
+          countDealerData: data.countDealerData
+          // 다른 필요 데이터 추가
+        })
       } catch (error) {
         console.error('Error fetching coordinates:', error);
       }
@@ -41,6 +53,10 @@ const Map = () => {
         const zoomControl = new window.kakao.maps.ZoomControl();
         map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
 
+
+        // ========== estate 데이터 뿌리기 ==========
+
+
         if (centerCoordinates) {
           const markers = [];
           Object.entries(centerCoordinates).forEach(([regionCode, coords]) => {
@@ -51,12 +67,35 @@ const Map = () => {
                 map: null, // 처음에는 보이지 않도록 설정
               });
 
-              marker.regionCode = regionCode;
-              marker.lat = lat;
-              marker.lng = lng;
+              // 정보 추출
+              const areaInfo = additionalInfo.areaData?.find(item => item.REGION_CD === regionCode) || {};
+              const countInfo = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              const areaResidence = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              const countResidence = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              const areaBuildType = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              const countBuildType = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              const areaDealer = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              const countDealer = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              
+
+              const infowindowContent = `
+                <div id="estateInfo">
+                  <strong>지역 코드:</strong> ${regionCode}<br>
+                  <strong>위도:</strong> ${lat}<br>
+                  <strong>경도:</strong> ${lng}<br>
+                  <strong>거래 면적 조회:</strong> ${areaInfo.ALL_AREA || '정보 없음'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
+                </div>
+              `;
 
               const infowindow = new window.kakao.maps.InfoWindow({
-                content: `<div style="padding:5px;">지역 코드: ${regionCode}<br>위도: ${lat}<br>경도: ${lng}</div>`,
+                content: infowindowContent,
               });
 
               // 클릭 이벤트 핸들러
@@ -90,6 +129,10 @@ const Map = () => {
         }
       });
     };
+
+
+    // ========== estate 데이터 뿌리기 ==========
+
 
     const kakaoMapScript = document.createElement('script');
     kakaoMapScript.async = false;

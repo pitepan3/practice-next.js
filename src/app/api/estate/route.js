@@ -49,11 +49,11 @@ export async function GET(request) {
       areaData,
       countData,
       areaResidenceData,
-      CountResidenceData,
-      AreaBuildTypeData,
-      CountBuildTypeData,
-      AreaDealerData,
-      CountDealerData,
+      countResidenceData,
+      areaBuildTypeData,
+      countBuildTypeData,
+      areaDealerData,
+      countDealerData,
     ] = await Promise.all([
       getRealEstateTradingArea(),
       getRealEstateTradingCount(),
@@ -72,16 +72,17 @@ export async function GET(request) {
       areaData: areaData.data, // 부동산 관련 데이터
       countData: countData.data,
       areaResidenceData: areaResidenceData.data,
-      CountResidenceData: CountResidenceData.data,
-      AreaBuildTypeData: AreaBuildTypeData.data,
-      CountBuildTypeData: CountBuildTypeData.data,
-      AreaDealerData: AreaDealerData.data,
-      CountDealerData: CountDealerData.data,
+      countResidenceData: countResidenceData.data,
+      areaBuildTypeData: areaBuildTypeData.data,
+      countBuildTypeData: countBuildTypeData.data,
+      areaDealerData: areaDealerData.data,
+      countDealerData: countDealerData.data,
     });
   } catch (error) {
     console.error('Error fetching data:', error.message);
     return NextResponse.error();
   }
+
 }
 
 export { REGION_CODES, CENTER_COORDINATE };
