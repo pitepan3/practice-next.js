@@ -191,6 +191,7 @@ img {
 
     .item {
       border-right: 1px solid black;
+      border-left: 1px solid black;
       padding-right: 18px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -202,7 +203,6 @@ img {
       }
 
       &:first-child {
-        border-left: 1px solid black;
         padding-left: 18px;
       }
     }
@@ -215,7 +215,7 @@ img {
 
     .loginBtn {
       border-right: 1px solid black;
-      padding-right: 18px;
+      padding: 0 18px;
 
       &:hover {
         font-weight: 900;
@@ -223,10 +223,11 @@ img {
     }
 
     .logoutBtn {
-      padding-right: 18px;
+      padding: 0 18px;
       background-color: inherit;
       border: none;
       border-right: 1px solid black;
+      border-left: 1px solid black;
       font-size: 16px;
       cursor: pointer;
 
@@ -236,6 +237,10 @@ img {
     }
 
     .signupBtn:hover {
+      font-weight: 900;
+    }
+
+    .myPageBtn:hover {
       font-weight: 900;
     }
   }
@@ -615,3 +620,26 @@ img {
 }
 
 // ========== signup ==========
+
+// ========== myPage ==========
+.myPage {
+  display: flex;
+  box-shadow: inset 0 0 20px blue;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+
+  .myPage__inner {
+    box-shadow: inset 0 0 20px red;
+    padding: 20px;
+    width: 1200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .myPage__header {}
+
+    .myPage__main {}
+  }
+}
+// ========== myPage ==========

@@ -70,12 +70,13 @@ const Map = () => {
               // 정보 추출
               const areaInfo = additionalInfo.areaData?.find(item => item.REGION_CD === regionCode) || {};
               const countInfo = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              const areaResidence = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              const countResidence = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              const areaBuildType = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              const countBuildType = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              const areaDealer = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              const countDealer = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              //추가 예정
+              // const areaResidence = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              // const countResidence = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              // const areaBuildType = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              // const countBuildType = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              // const areaDealer = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
+              // const countDealer = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
               
 
               const infowindowContent = `
@@ -85,12 +86,12 @@ const Map = () => {
                   <strong>경도:</strong> ${lng}<br>
                   <strong>거래 면적 조회:</strong> ${areaInfo.ALL_AREA || '정보 없음'}<br>
                   <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
+                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
                 </div>
               `;
 
@@ -150,10 +151,10 @@ const Map = () => {
     const markers = markersRef.current;
 
     markers.forEach(marker => {
-      if (level >= 4) {
-        marker.setMap(map); // 줌 레벨이 4 이상일 때 마커 보이기
+      if (level >= 6) {
+        marker.setMap(map); // 줌 레벨이 6 이상일 때 마커 보이기
       } else {
-        marker.setMap(null); // 줌 레벨이 4 미만일 때 마커 숨기기
+        marker.setMap(null); // 줌 레벨이 6 미만일 때 마커 숨기기
       }
     });
   };

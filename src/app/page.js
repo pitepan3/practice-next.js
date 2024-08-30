@@ -55,25 +55,25 @@ export default function Home() {
   // ========== sidebar ==========
 
   // 부동산 관련 공공데이터API
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch('/api/estate');
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await fetch('/api/estate');
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! Status: ${response.status}`);
+  //       }
 
-        const data = await response.json();
-        console.log(data);
+  //       const data = await response.json();
+  //       console.log(data);
 
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   }
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
   // 부동산 관련 공공데이터API
 
 
