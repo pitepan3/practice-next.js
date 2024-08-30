@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect } from "react";
-import { CETNER_COORDINATE } from "@/app/api/estate/data/region_codes";
 
 const Map = () => {
   useEffect(() => {

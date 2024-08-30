@@ -32,6 +32,7 @@ const CETNER_COORDINATE = regionData.reduce((acc, data) => {
   return acc;
 }, {});
 
+console.log(CETNER_COORDINATE)
 
 // REGION_CODES와 CETNER_COORDINATE 내보내기
 export { REGION_CODES, CETNER_COORDINATE };
