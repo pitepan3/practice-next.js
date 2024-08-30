@@ -1,5 +1,5 @@
 // 매입자거주지별 부동산 거래 건수 조회
-import { REGION_CODES } from "./region_codes";
+import { REGION_CODES } from "../route";
 
 export default async function getRealEstateTradingCountResidence() {
   const API_KEY = process.env.NEXT_PUBLIC_PUBLIC_RENTAL_HOUSE_KEY;

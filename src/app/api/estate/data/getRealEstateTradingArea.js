@@ -1,5 +1,6 @@
 // 거래 면적 조회
-import { REGION_CODES } from "./region_codes";
+import { REGION_CODES } from "../route";
+
 
 export default async function getRealEstateTradingArea() {
   const API_KEY = process.env.NEXT_PUBLIC_PUBLIC_RENTAL_HOUSE_KEY;
