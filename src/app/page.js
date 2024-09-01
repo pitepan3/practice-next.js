@@ -14,14 +14,6 @@ export default function Home() {
   // ========== 로그인모달, 회원가입모달 ==========
   const [isLoginVisible, setLoginVisible] = useState(false);
   const [isSignupVisible, setSignupVisible] = useState(false);
-
-  const showLogin = () => {
-    setLoginVisible(!isLoginVisible);
-  }
-
-  const showSignup = () => {
-    setSignupVisible(!isSignupVisible);
-  }
   // ========== 로그인모달, 회원가입모달 ==========
 
   // ========== sidebar ==========
@@ -30,10 +22,6 @@ export default function Home() {
 
   const showSidebar = () => {
     setSidebarVisible(true);
-  }
-
-  const hideSidebar = () => {
-    setSidebarVisible(false);
   }
 
   const handleMyHouseClick = () => {
@@ -87,8 +75,8 @@ export default function Home() {
         </Login>
         <Header
           isLoggedIn={!!session}
-          showLogin={showLogin}
-          showSignup={showSignup}
+          showLogin={() => setLoginVisible(!isLoginVisible)}
+          showSignup={() => setSignupVisible(!isSignupVisible)}
         />
         <SignUp
           isSignupVisible={isSignupVisible}
@@ -96,8 +84,8 @@ export default function Home() {
         />
         <Sidebar
           isSidebarVisible={isSidebarVisible}
-          showSidebar={showSidebar}
-          hideSidebar={hideSidebar}
+          hideSidebar={() => setSidebarVisible(false)}
+          showSidebar={(showSidebar)}
           content={sidebarContent}
           setSidebarContent={setSidebarContent}
         />
