@@ -22,7 +22,6 @@ const Header = ({ isLoggedIn, showLogin, showSignup }) => {
             >
               로그아웃
             </button>
-            <a onClick={showSignup} className='signupBtn'>회원가입</a>
           </>
         ) : (
           <>
