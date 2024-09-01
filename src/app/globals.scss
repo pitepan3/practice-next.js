@@ -257,10 +257,6 @@ img {
 
 // ========== header ==========
 // ========== sidebar ==========
-.sidebar.visible {
-  display: block;
-}
-
 .sidebar {
   background-color: var(--mainBg-color);
   width: 400px;
@@ -271,7 +267,6 @@ img {
   left: 0;
   z-index: 999;
   margin-left: 70px;
-  display: none;
 
   .sidebar__search {
     display: flex;
@@ -280,7 +275,6 @@ img {
     .searchBtn {
       display: none;
     }
-
 
     input {
       height: 40px;
@@ -369,6 +363,10 @@ img {
 
   #map {
     height: calc(100vh - 74px);
+    width: calc(100vw - 470px);
+    position: absolute;
+    right: 0;
+    top: 0;
 
     @media (max-width: 800px) {
       height: calc(100vh - 134px);
@@ -641,4 +639,5 @@ img {
     .myPage__main {}
   }
 }
+
 // ========== myPage ==========

@@ -1,7 +1,6 @@
 // 거래 건수 조회
 import { REGION_CODES } from "../route";
 
-
 export default async function getRealEstateTradingCount() {
   const API_KEY = process.env.NEXT_PUBLIC_PUBLIC_RENTAL_HOUSE_KEY;
   const requests = REGION_CODES.map((regionCode) => {

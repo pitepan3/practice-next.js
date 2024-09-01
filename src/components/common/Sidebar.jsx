@@ -1,9 +1,6 @@
 import React from 'react';
 
 const Sidebar = ({
-  isSidebarVisible,
-  showSidebar,
-  hideSidebar,
   content,
   setSidebarContent
 }) => {
@@ -12,15 +9,14 @@ const Sidebar = ({
     <>
       <section className='nav'>
         <div className='nav__inner'>
-          <button onClick={() => { showSidebar(); setSidebarContent('default'); }}
+          <button onClick={() => setSidebarContent('default')}
             className='item' type='button'>검색</button>
-          <button onClick={hideSidebar} className='item' type='button'>지도</button>
-          <button onClick={() => { showSidebar(); setSidebarContent('myHouse'); }} className='item' type='button'>우리집</button>
-          <button onClick={() => { showSidebar(); setSidebarContent('findRealPrices'); }} className='item' type='button'>실거래가조회</button>
-          <button onClick={() => { showSidebar(); setSidebarContent('estateProperty'); }} className='item' type='button'>매물</button>
+          <button onClick={() => setSidebarContent('myHouse')} className='item' type='button'>우리집</button>
+          <button onClick={() => setSidebarContent('findRealPrices')} className='item' type='button'>실거래가조회</button>
+          <button onClick={() => setSidebarContent('estateProperty')} className='item' type='button'>매물</button>
         </div>
       </section>
-      <section className={`sidebar ${isSidebarVisible ? 'visible' : ''}`}>
+      <section className='sidebar'>
         {content === 'default' && (
           <div className="sidebar__search">
             <input

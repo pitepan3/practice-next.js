@@ -1,7 +1,6 @@
 // 건물유형별 부동산 거래 면적 조회
 import { REGION_CODES } from "../route";
 
-
 export default async function getRealEstateTradingAreaBuildType() {
   const API_KEY = process.env.NEXT_PUBLIC_PUBLIC_RENTAL_HOUSE_KEY;
   const requests = REGION_CODES.map((regionCode) => {

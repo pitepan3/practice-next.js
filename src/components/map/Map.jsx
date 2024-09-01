@@ -133,8 +133,6 @@ const Map = () => {
 
 
     // ========== estate 데이터 뿌리기 ==========
-
-
     const kakaoMapScript = document.createElement('script');
     kakaoMapScript.async = false;
     kakaoMapScript.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&autoload=false`;
@@ -151,10 +149,10 @@ const Map = () => {
     const markers = markersRef.current;
 
     markers.forEach(marker => {
-      if (level >= 6) {
-        marker.setMap(map); // 줌 레벨이 6 이상일 때 마커 보이기
+      if (level >= 4, level < 7) {
+        marker.setMap(map); // 줌 레벨이 4~7 일 때 마커 보이기
       } else {
-        marker.setMap(null); // 줌 레벨이 6 미만일 때 마커 숨기기
+        marker.setMap(null); // 줌 레벨이 4 미만일 때 마커 숨기기
       }
     });
   };
