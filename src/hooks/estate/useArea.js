@@ -22,3 +22,4 @@ export default async function useArea() {
     return { data: [] }; // 오류 발생 시 빈 데이터 반환
   }
 }
+
