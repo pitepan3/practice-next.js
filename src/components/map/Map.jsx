@@ -6,6 +6,7 @@ const Map = () => {
   const [centerCoordinates, setCenterCoordinates] = useState({});
   const [additionalInfo, setAdditionalInfo] = useState({});
   const mapRef = useRef(null);
+  const clustererRef = useRef(null); // 클러스터링을 위한 ref
   const markersRef = useRef([]);
   const infowindowRef = useRef(null); // infoWindow 참조를 위한 useRef
 
@@ -15,18 +16,18 @@ const Map = () => {
       try {
         const response = await fetch('/api/estate'); // API 경로를 올바르게 설정
         const data = await response.json();
+
         setCenterCoordinates(data.centerCoordinate); // 중심 좌표 데이터 설정
         setAdditionalInfo({
           areaData: data.areaData,
           countData: data.countData,
-          areaResidenceData: data.residenceData,
-          CountResidenceData: data.countResidenceData,
+          areaResidenceData: data.areaResidenceData,
+          countResidenceData: data.countResidenceData,
           areaBuildTypeData: data.areaBuildTypeData,
           countBuildTypeData: data.countBuildTypeData,
           areaDealerData: data.areaDealerData,
-          countDealerData: data.countDealerData
-          // 다른 필요 데이터 추가
-        })
+          countDealerData: data.countDealerData,
+        });
       } catch (error) {
         console.error('Error fetching coordinates:', error);
       }
@@ -41,7 +42,7 @@ const Map = () => {
         const container = document.getElementById('map');
         const options = {
           center: new window.kakao.maps.LatLng(37.500335, 127.037596),
-          level: 3,
+          level: 4,
         };
 
         const map = new window.kakao.maps.Map(container, options);
@@ -53,10 +54,15 @@ const Map = () => {
         const zoomControl = new window.kakao.maps.ZoomControl();
         map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
 
+        // 클러스터러 생성
+        const clusterer = new window.kakao.maps.MarkerClusterer({
+          map: map,
+          averageCenter: true,
+          minLevel: 10,
+        });
+        clustererRef.current = clusterer;
 
         // ========== estate 데이터 뿌리기 ==========
-
-
         if (centerCoordinates) {
           const markers = [];
           Object.entries(centerCoordinates).forEach(([regionCode, coords]) => {
@@ -77,7 +83,6 @@ const Map = () => {
               const areaDealerInfo = additionalInfo.areaDealerData?.find(item => item.REGION_CD === regionCode) || {};
               const countDealerInfo = additionalInfo.countDealerData?.find(item => item.REGION_CD === regionCode) || {};
 
-
               const infowindowContent = `
                 <div id="estateInfo">
                   <strong>지역 코드:</strong> ${regionCode}: ${areaInfo.REGION_NM}<br>
@@ -86,21 +91,19 @@ const Map = () => {
                   <strong>거래 면적 조회:</strong> ${areaInfo.ALL_AREA || '정보 없음'}<br>
                   <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
                   <strong>매입자거주지별 거래 면적 조회:</strong> ${areaResidenceInfo.ALL_AREA || '정보 없음'}<br>
-                  <strong>매입자거주지별 거래 건수 조회:</strong> ${countResidenceInfo.ALL_CTN || '정보 없음'}<br>
-                  <strong>
-                    건물유형별 거래 면적(합계 면적):</strong> ${areaBuildTypeInfo.ALL_AREA || '정보 없음'}
-                    건물유형별 거래 면적(주거용 소계 면적):</strong> ${areaBuildTypeInfo.LIVE_SUM_AREA || '정보 없음'}
-                    건물유형별 거래 면적(단독주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE11_AREA || '정보 없음'}
-                    건물유형별 거래 면적(다가구주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE12_AREA || '정보 없음'}
-                    건물유형별 거래 면적(다세대주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE13_AREA || '정보 없음'}
-                    건물유형별 거래 면적(연립주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE14_AREA || '정보 없음'}
-                    건물유형별 거래 면적(아파트 면적):</strong> ${areaBuildTypeInfo.BULD_USE15_AREA || '정보 없음'}
-                  <br>
-                  <strong>거래 건수 조회:</strong> ${countBuildTypeInfo.ALL_CN || '정보 없음'}<br>
-                  <strong>거래 건수 조회:</strong> ${areaDealerInfo.ALL_CN || '정보 없음'}<br>
-                  <strong>거래 건수 조회:</strong> ${countDealerInfo.ALL_CN || '정보 없음'}<br>
+                  <strong>매입자거주지별 거래 건수 조회:</strong> ${countResidenceInfo.ALL_CNT || '정보 없음'}<br>
+                  <strong>건물유형별 거래 면적(합계 면적):</strong> ${areaBuildTypeInfo.ALL_AREA || '정보 없음'}<br>
+                  <strong>건물유형별 거래 건수(합계 건수):</strong> ${countBuildTypeInfo.ALL_CNT || '정보 없음'}<br>
+                  <strong>거래주체별 면적 조회(합계 면적):</strong> ${areaDealerInfo.ALL_AREA || '정보 없음'}<br>
+                  <strong>거래주체별 건수 조회:</strong> ${countDealerInfo.ALL_CNT || '정보 없음'}<br>
                 </div>
-              `;
+                `;
+                  // 건물유형별 거래 면적(주거용 소계 면적):</strong> ${areaBuildTypeInfo.LIVE_SUM_AREA || '정보 없음'}
+                  // 건물유형별 거래 면적(단독주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE11_AREA || '정보 없음'}
+                  // 건물유형별 거래 면적(다가구주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE12_AREA || '정보 없음'}
+                  // 건물유형별 거래 면적(다세대주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE13_AREA || '정보 없음'}
+                  // 건물유형별 거래 면적(연립주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE14_AREA || '정보 없음'}
+                  // 건물유형별 거래 면적(아파트 면적):</strong> ${areaBuildTypeInfo.BULD_USE15_AREA || '정보 없음'}
 
               const infowindow = new window.kakao.maps.InfoWindow({
                 content: infowindowContent,
@@ -125,6 +128,7 @@ const Map = () => {
             });
           });
 
+          clusterer.addMarkers(markers); // 클러스터러에 마커 추가
           markersRef.current = markers;
 
           // 줌 레벨 변경 시 마커 가시성 조절
@@ -138,11 +142,10 @@ const Map = () => {
       });
     };
 
-
-    // ========== estate 데이터 뿌리기 ==========
+    // Kakao Map SDK 로드
     const kakaoMapScript = document.createElement('script');
     kakaoMapScript.async = false;
-    kakaoMapScript.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&autoload=false`;
+    kakaoMapScript.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&autoload=false&libraries=clusterer`;
     kakaoMapScript.addEventListener('load', onLoadKakaoAPI);
     document.head.appendChild(kakaoMapScript);
 
@@ -156,10 +159,10 @@ const Map = () => {
     const markers = markersRef.current;
 
     markers.forEach(marker => {
-      if (level >= 4, level < 7) {
-        marker.setMap(map); // 줌 레벨이 4~7 일 때 마커 보이기
+      if (level >= 4 && level < 7) {
+        marker.setMap(map); // 줌 레벨이 4~7일 때 마커 보이기
       } else {
-        marker.setMap(null); // 줌 레벨이 4 미만일 때 마커 숨기기
+        marker.setMap(null); // 그 외 레벨에서는 마커 숨기기
       }
     });
   };
