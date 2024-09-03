@@ -1,28 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Header from "@/components/common/Header";
 import Sidebar from "@/components/common/Sidebar";
 import Map from "@/components/map/Map";
 import Login from "@/components/modal/LogIn";
 import SignUp from "@/components/modal/SignUp";
-import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 
-// React Query 클라이언트 설정
-const queryClient = new QueryClient();
 
-export default function Home() {
-  return (
-    // QueryClientProvider를 최상위에 위치시킵니다.
-    <QueryClientProvider client={queryClient}>
-      <HomeContent />
-    </QueryClientProvider>
-  );
-}
-
-// 실제 컴포넌트의 콘텐츠를 별도로 정의합니다.
-function HomeContent() {
+export default function Home () {
   const { data: session } = useSession();
 
   // 로그인 및 회원가입 모달 상태 관리
@@ -32,19 +19,32 @@ function HomeContent() {
   // 사이드바 상태 관리
   const [sidebarContent, setSidebarContent] = useState('default');
 
-  // 부동산 관련 공공데이터 API 호출 (React Query 사용)
-  const { data: estateData, error, isLoading } = useQuery({
-    queryKey: ['estateData'], // 쿼리 키
-    queryFn: async () => {
-      const response = await fetch('/api/estate');
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    }
-  });
+  // 부동산 관련 공공데이터 API 호출
+  const [estateData, setEstateData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (isLoading) return <div>Loading...</div>;
+  useEffect(() => {
+    const fetchEstateData = async () => {
+      try {
+        const response = await fetch('/api/estate');
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(data)
+        setEstateData(data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEstateData();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (

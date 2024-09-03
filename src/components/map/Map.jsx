@@ -40,7 +40,7 @@ const Map = () => {
       window.kakao.maps.load(() => {
         const container = document.getElementById('map');
         const options = {
-          center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+          center: new window.kakao.maps.LatLng(37.500335, 127.037596),
           level: 3,
         };
 
@@ -70,28 +70,35 @@ const Map = () => {
               // 정보 추출
               const areaInfo = additionalInfo.areaData?.find(item => item.REGION_CD === regionCode) || {};
               const countInfo = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              //추가 예정
-              // const areaResidence = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              // const countResidence = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              // const areaBuildType = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              // const countBuildType = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              // const areaDealer = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              // const countDealer = additionalInfo.countData?.find(item => item.REGION_CD === regionCode) || {};
-              
+              const areaResidenceInfo = additionalInfo.areaResidenceData?.find(item => item.REGION_CD === regionCode) || {};
+              const countResidenceInfo = additionalInfo.countResidenceData?.find(item => item.REGION_CD === regionCode) || {};
+              const areaBuildTypeInfo = additionalInfo.areaBuildTypeData?.find(item => item.REGION_CD === regionCode) || {};
+              const countBuildTypeInfo = additionalInfo.countBuildTypeData?.find(item => item.REGION_CD === regionCode) || {};
+              const areaDealerInfo = additionalInfo.areaDealerData?.find(item => item.REGION_CD === regionCode) || {};
+              const countDealerInfo = additionalInfo.countDealerData?.find(item => item.REGION_CD === regionCode) || {};
+
 
               const infowindowContent = `
                 <div id="estateInfo">
-                  <strong>지역 코드:</strong> ${regionCode}<br>
+                  <strong>지역 코드:</strong> ${regionCode}: ${areaInfo.REGION_NM}<br>
                   <strong>위도:</strong> ${lat}<br>
                   <strong>경도:</strong> ${lng}<br>
                   <strong>거래 면적 조회:</strong> ${areaInfo.ALL_AREA || '정보 없음'}<br>
                   <strong>거래 건수 조회:</strong> ${countInfo.ALL_CNT || '정보 없음'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
-                  <strong>거래 건수 조회:</strong> ${countInfo.ALL_CN || '추가예정'}<br>
+                  <strong>매입자거주지별 거래 면적 조회:</strong> ${areaResidenceInfo.ALL_AREA || '정보 없음'}<br>
+                  <strong>매입자거주지별 거래 건수 조회:</strong> ${countResidenceInfo.ALL_CTN || '정보 없음'}<br>
+                  <strong>
+                    건물유형별 거래 면적(합계 면적):</strong> ${areaBuildTypeInfo.ALL_AREA || '정보 없음'}
+                    건물유형별 거래 면적(주거용 소계 면적):</strong> ${areaBuildTypeInfo.LIVE_SUM_AREA || '정보 없음'}
+                    건물유형별 거래 면적(단독주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE11_AREA || '정보 없음'}
+                    건물유형별 거래 면적(다가구주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE12_AREA || '정보 없음'}
+                    건물유형별 거래 면적(다세대주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE13_AREA || '정보 없음'}
+                    건물유형별 거래 면적(연립주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE14_AREA || '정보 없음'}
+                    건물유형별 거래 면적(아파트 면적):</strong> ${areaBuildTypeInfo.BULD_USE15_AREA || '정보 없음'}
+                  <br>
+                  <strong>거래 건수 조회:</strong> ${countBuildTypeInfo.ALL_CN || '정보 없음'}<br>
+                  <strong>거래 건수 조회:</strong> ${areaDealerInfo.ALL_CN || '정보 없음'}<br>
+                  <strong>거래 건수 조회:</strong> ${countDealerInfo.ALL_CN || '정보 없음'}<br>
                 </div>
               `;
 
@@ -142,7 +149,7 @@ const Map = () => {
     return () => {
       document.head.removeChild(kakaoMapScript);
     };
-  }, [centerCoordinates]);
+  }, [centerCoordinates, additionalInfo]);
 
   const adjustMarkerVisibility = (map) => {
     const level = map.getLevel();

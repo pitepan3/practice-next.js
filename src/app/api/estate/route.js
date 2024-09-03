@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import getRealEstateTradingArea from './data/getRealEstateTradingArea';
-import getRealEstateTradingCount from './data/getRealEstateTradingCount';
-import getRealEstateTradingAreaResidence from './data/getRealEstateTradingAreaResidence';
-import getRealEstateTradingCountResidence from './data/getRealEstateTradingCountResidence';
-import getRealEstateTradingAreaBuildType from './data/getRealEstateTradingAreaBuildType';
-import getRealEstateTradingCountBuildType from './data/getRealEstateTradingCountBuildType';
-import getRealEstateTradingAreaDealer from './data/getRealEstateTradingAreaDealer';
-import getRealEstateTradingCountDealer from './data/getRealEstateTradingCountDealer';
+import useArea from '@/hooks/estate/useArea';
+import useCount from '@/hooks/estate/useCount';
+import useAreaResidence from '@/hooks/estate/useAreaResidence';
+import useCountResidence from '@/hooks/estate/useCountResidence';
+import useAreaBuildType from '@/hooks/estate/useAreaBuildType';
+import useCountBuildType from '@/hooks/estate/useCountBuildType';
+import useAreaDealer from '@/hooks/estate/useAreaDealer';
+import useCountDealer from '@/hooks/estate/useCountDealer';
 
 // REGION_CODES.txt 파일 경로 설정
 const filePath = path.join(process.cwd(), 'REGION_CODES.txt');
@@ -55,14 +55,14 @@ export async function GET(request) {
       areaDealerData,
       countDealerData,
     ] = await Promise.all([
-      getRealEstateTradingArea(),
-      getRealEstateTradingCount(),
-      getRealEstateTradingAreaResidence(),
-      getRealEstateTradingCountResidence(),
-      getRealEstateTradingAreaBuildType(),
-      getRealEstateTradingCountBuildType(),
-      getRealEstateTradingAreaDealer(),
-      getRealEstateTradingCountDealer(),
+      useArea(),
+      useCount(),
+      useAreaResidence(),
+      useCountResidence(),
+      useAreaBuildType(),
+      useCountBuildType(),
+      useAreaDealer(),
+      useCountDealer(),
     ]);
 
     // 데이터 반환
