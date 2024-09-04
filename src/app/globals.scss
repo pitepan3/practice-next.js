@@ -258,15 +258,45 @@ img {
 // ========== header ==========
 // ========== sidebar ==========
 .sidebar {
-  background-color: var(--mainBg-color);
+  background-color: var(--white);
   width: 400px;
   height: calc(100% - 74px);
-  padding: 16px;
   position: absolute;
   top: 74px;
   left: 0;
   z-index: 999;
   margin-left: 70px;
+
+  .search {
+    position: absolute;
+    z-index: 999999;
+    width: 400px;
+    height: calc(100vh - 74px);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    #search__input {
+      padding: 10px 20px;
+      margin-bottom: 10px;
+    }
+
+    .areaName {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      a {
+        text-align: center;
+        padding: 20px;
+        cursor: pointer;
+
+        &:hover {
+          color: var(--white);
+          background-color: var(--black);
+        }
+      }
+    }
+  }
 
 
   @media (max-width: 800px) {
@@ -283,6 +313,7 @@ img {
 .nav {
   position: absolute;
   background-color: var(--white);
+  border-right: 1px solid var(--black);
   display: flex;
   flex-direction: column;
   left: 0;
@@ -349,46 +380,6 @@ img {
 }
 
 // ========== map ==========
-// ========== search ==========
-
-.search {
-  
-}
-// .sidebar__search {
-//   display: flex;
-//   flex-direction: column;
-
-//   .searchBtn {
-//     display: none;
-//   }
-
-//   input {
-//     height: 40px;
-//     padding-left: 12px;
-//   }
-// }
-
-// .sidebar__area {
-//   background-color: var(--white);
-//   display: grid;
-//   grid-template-columns: repeat(3, 1fr);
-//   margin-top: 20px;
-//   border: 1px solid var(--black);
-
-
-//   span {
-//     text-align: center;
-//     padding: 20px;
-//     cursor: pointer;
-
-//     &:hover {
-//       color: var(--white);
-//       background-color: var(--black);
-//     }
-//   }
-// }
-
-// ========== search ==========
 // ========== login ==========
 
 .login.visible {

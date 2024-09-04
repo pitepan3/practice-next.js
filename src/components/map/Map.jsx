@@ -169,7 +169,6 @@ const Map = () => {
 
   return (
     <>
-      <Search />
       <section className="kakao__map">
         <div id="map"></div>
       </section>
