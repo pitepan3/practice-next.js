@@ -1,5 +1,6 @@
 import "./globals.scss";
-import { SessionProvider } from "@/components/provider/SessionProvider";
+import ReactQueryProvider from "@/utils/ReactQueryProvider";
+import { SessionProvider } from "@/utils/SessionProvider";
 
 export const metadata = {
   title: "Hoon",
@@ -10,7 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body>
-        <SessionProvider>{children}</SessionProvider>
+        <ReactQueryProvider>
+          <SessionProvider>{children}</SessionProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );
