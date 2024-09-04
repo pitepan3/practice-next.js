@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Search from "../search/Search";
 
 const Map = () => {
   const [centerCoordinates, setCenterCoordinates] = useState({});
@@ -97,12 +98,12 @@ const Map = () => {
                   <strong>거래주체별 건수 조회:</strong> ${countDealerInfo.ALL_CNT || '정보 없음'}<br>
                 </div>
                 `;
-                  // 건물유형별 거래 면적(주거용 소계 면적):</strong> ${areaBuildTypeInfo.LIVE_SUM_AREA || '정보 없음'}
-                  // 건물유형별 거래 면적(단독주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE11_AREA || '정보 없음'}
-                  // 건물유형별 거래 면적(다가구주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE12_AREA || '정보 없음'}
-                  // 건물유형별 거래 면적(다세대주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE13_AREA || '정보 없음'}
-                  // 건물유형별 거래 면적(연립주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE14_AREA || '정보 없음'}
-                  // 건물유형별 거래 면적(아파트 면적):</strong> ${areaBuildTypeInfo.BULD_USE15_AREA || '정보 없음'}
+              // 건물유형별 거래 면적(주거용 소계 면적):</strong> ${areaBuildTypeInfo.LIVE_SUM_AREA || '정보 없음'}
+              // 건물유형별 거래 면적(단독주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE11_AREA || '정보 없음'}
+              // 건물유형별 거래 면적(다가구주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE12_AREA || '정보 없음'}
+              // 건물유형별 거래 면적(다세대주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE13_AREA || '정보 없음'}
+              // 건물유형별 거래 면적(연립주택 면적):</strong> ${areaBuildTypeInfo.BULD_USE14_AREA || '정보 없음'}
+              // 건물유형별 거래 면적(아파트 면적):</strong> ${areaBuildTypeInfo.BULD_USE15_AREA || '정보 없음'}
 
               const infowindow = new window.kakao.maps.InfoWindow({
                 content: infowindowContent,
@@ -167,9 +168,12 @@ const Map = () => {
   };
 
   return (
-    <section className="kakao__map">
-      <div id="map"></div>
-    </section>
+    <>
+      <Search />
+      <section className="kakao__map">
+        <div id="map"></div>
+      </section>
+    </>
   );
 };
 

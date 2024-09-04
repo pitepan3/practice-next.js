@@ -268,39 +268,6 @@ img {
   z-index: 999;
   margin-left: 70px;
 
-  .sidebar__search {
-    display: flex;
-    flex-direction: column;
-
-    .searchBtn {
-      display: none;
-    }
-
-    input {
-      height: 40px;
-      padding-left: 12px;
-    }
-  }
-
-  .sidebar__area {
-    background-color: var(--white);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: 20px;
-    border: 1px solid var(--black);
-
-
-    span {
-      text-align: center;
-      padding: 20px;
-      cursor: pointer;
-
-      &:hover {
-        color: var(--white);
-        background-color: var(--black);
-      }
-    }
-  }
 
   @media (max-width: 800px) {
     top: 134px;
@@ -382,6 +349,46 @@ img {
 }
 
 // ========== map ==========
+// ========== search ==========
+
+.search {
+  
+}
+// .sidebar__search {
+//   display: flex;
+//   flex-direction: column;
+
+//   .searchBtn {
+//     display: none;
+//   }
+
+//   input {
+//     height: 40px;
+//     padding-left: 12px;
+//   }
+// }
+
+// .sidebar__area {
+//   background-color: var(--white);
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   margin-top: 20px;
+//   border: 1px solid var(--black);
+
+
+//   span {
+//     text-align: center;
+//     padding: 20px;
+//     cursor: pointer;
+
+//     &:hover {
+//       color: var(--white);
+//       background-color: var(--black);
+//     }
+//   }
+// }
+
+// ========== search ==========
 // ========== login ==========
 
 .login.visible {
