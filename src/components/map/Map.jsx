@@ -6,15 +6,15 @@ const Map = () => {
   const [centerCoordinates, setCenterCoordinates] = useState({});
   const [additionalInfo, setAdditionalInfo] = useState({});
   const mapRef = useRef(null);
-  const clustererRef = useRef(null); // 클러스터링을 위한 ref
+  const clustererRef = useRef(null);
   const markersRef = useRef([]);
-  const infowindowRef = useRef(null); // infoWindow 참조를 위한 useRef
+  const infowindowRef = useRef(null);
 
   useEffect(() => {
     // API로부터 REGION_CODES와 CENTER_COORDINATE 데이터를 가져옵니다.
     const fetchCoordinates = async () => {
       try {
-        const response = await fetch('/api/estate'); // API 경로를 올바르게 설정
+        const response = await fetch('/api/estate');
         const data = await response.json();
 
         setCenterCoordinates(data.centerCoordinate); // 중심 좌표 데이터 설정
@@ -70,7 +70,6 @@ const Map = () => {
               const [lat, lng] = coord.split(',').map(Number);
               const marker = new window.kakao.maps.Marker({
                 position: new window.kakao.maps.LatLng(lat, lng),
-                map: null, // 처음에는 보이지 않도록 설정
               });
 
               // 정보 추출

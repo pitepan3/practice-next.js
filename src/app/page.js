@@ -9,7 +9,7 @@ import Login from "@/components/modal/LogIn";
 import SignUp from "@/components/modal/SignUp";
 
 
-export default function Home () {
+export default function Home() {
   const { data: session } = useSession();
 
   // 로그인 및 회원가입 모달 상태 관리
@@ -46,6 +46,12 @@ export default function Home () {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+  // 부동산 관련 공공데이터 API 호출
+
+  
+  const updateSidebarContent = (content) => { // 부동산 관련 정보를 Map.jsx => Sidebar.jsx로
+    setSidebarContent(content);
+  };
 
   return (
     <main id="main">
@@ -66,7 +72,11 @@ export default function Home () {
         content={sidebarContent}
         setSidebarContent={setSidebarContent}
       />
-      <Map />
+      <Map
+        centerCoordinates={estateData?.centerCoordinate}
+        additionalInfo={estateData}
+        onMarkerClick={updateSidebarContent}
+      />
     </main>
   );
 }

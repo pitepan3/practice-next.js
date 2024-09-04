@@ -35,15 +35,15 @@ const Sidebar = ({
               <span>전라남도</span>
               <span>경상북도</span>
               <span>경상남도</span>
-              <span>서울광역시</span>
+              <span>서울특별시</span>
               <span>인천광역시</span>
               <span>부산광역시</span>
               <span>대구광역시</span>
               <span>광주광역시</span>
               <span>대전광역시</span>
               <span>울산광역시</span>
-              <span>세종특별시</span>
-              <span>제주도</span>
+              <span>세종특별자치시</span>
+              <span>제주특별자치도</span>
             </div>
           </div>
         )}
