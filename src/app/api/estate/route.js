@@ -2,6 +2,24 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+import { regionBusan } from '@/data/regionBusan'
+import { regionChungBuk } from '@/data/regionChungBuk'
+import { regionChungNam } from '@/data/regionChungNam'
+import { regionDaejeon } from '@/data/regionDaejeon'
+import { regionGangwon } from '@/data/regionGangwon'
+import { regionGwangju } from '@/data/regionGwangju'
+import { regionGyeongBuk } from '@/data/regionGyeongBuk'
+import { regionGyeonggi } from '@/data/regionGyeonggi'
+import { regionGyeongNam } from '@/data/regionGyeongNam'
+import { regionIncheon } from '@/data/regionIncheon'
+import { regionDaegu } from '@/data/regionDaegu'
+import { regionJeonBuk } from '@/data/regionJeonBuk'
+import { regionJeonNam } from '@/data/regionJeonNam'
+import { regionSejong } from '@/data/regionSejong'
+import { regionSeoul } from '@/data/regionSeoul'
+import { regionUlsan } from '@/data/regionUlsan'
+import { regionJeju } from '@/data/regionJeju'
+
 // REGION_CODES.txt 파일 경로 설정
 const filePath = path.join(process.cwd(), 'REGION_CODES.txt');
 
