@@ -285,7 +285,9 @@ img {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
 
-      a {
+      button {
+        background-color: var(--white);
+        border: none;
         text-align: center;
         padding: 20px;
         cursor: pointer;
