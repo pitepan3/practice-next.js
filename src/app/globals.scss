@@ -257,6 +257,10 @@ img {
 
 // ========== header ==========
 // ========== sidebar ==========
+.sidebar.hidden {
+  display: none;
+}
+
 .sidebar {
   background-color: var(--white);
   width: 400px;
@@ -268,6 +272,19 @@ img {
   margin-left: 70px;
   overflow-y: auto;
   overflow-x: hidden;
+
+  .closeBtn {
+    position: fixed;
+    left: 380px;
+    bottom: 30px;
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    z-index: 99999999999;
+    cursor: pointer;
+  }
 
   .search {
     position: absolute;
@@ -391,7 +408,7 @@ img {
 
   #map {
     height: calc(100vh - 74px);
-    width: calc(100vw - 470px);
+    width: calc(100vw - 70px);
     position: absolute;
     right: 0;
     top: 0;
