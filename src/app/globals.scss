@@ -157,6 +157,7 @@ img {
 // ========== vars ==========
 
 // ========== estateInfo ==========
+
 #estateInfo {
   padding: 10px;
   width: 300px;
@@ -164,7 +165,6 @@ img {
 }
 
 // ========== estateInfo ==========
-
 // ========== header ==========
 
 .header {
@@ -266,6 +266,8 @@ img {
   left: 0;
   z-index: 999;
   margin-left: 70px;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   .search {
     position: absolute;
@@ -281,7 +283,33 @@ img {
       margin-bottom: 10px;
     }
 
+    .areaName.hidden {
+      display: none;
+    }
+
     .areaName {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      button {
+        background-color: var(--white);
+        border: none;
+        text-align: center;
+        padding: 20px;
+        cursor: pointer;
+
+        &:hover {
+          color: var(--white);
+          background-color: var(--black);
+        }
+      }
+    }
+
+    .areaItem.hidden {
+      display: none;
+    }
+
+    .areaItem {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
 

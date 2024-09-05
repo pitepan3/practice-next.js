@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { regionBusan } from '@/data/regionBusan'
 import { regionChungBuk } from '@/data/regionChungBuk'
 import { regionChungNam } from '@/data/regionChungNam'
@@ -18,8 +18,16 @@ import { regionUlsan } from '@/data/regionUlsan'
 import { regionJeju } from '@/data/regionJeju'
 
 
-
-const AreaSearch = ({ content, setAreaSearchContent }) => {
+const AreaSearch = ({
+  content,
+  setAreaSearchContent,
+  isAreaSearchHidden,
+  onClose,
+  showArea,
+  isAreaSearchItemHidden,
+  onCloseItem,
+  showItem
+}) => {
 
   return (
     <section className="search">
@@ -27,179 +35,150 @@ const AreaSearch = ({ content, setAreaSearchContent }) => {
         id='search__input'
         type='input'
         placeholder='검색어를 입력하세요'
-      ></input>
-      <div className="areaName">
-        <button onClick={() => setAreaSearchContent('Gyeonggi')}>경기도</button>
-        <button onClick={() => setAreaSearchContent('Gangwon')}>강원도</button>
-        <button onClick={() => setAreaSearchContent('ChungBuk')}>충청북도</button>
-        <button onClick={() => setAreaSearchContent('ChungNam')}>충청남도</button>
-        <button onClick={() => setAreaSearchContent('JeonBuk')}>전라북도</button>
-        <button onClick={() => setAreaSearchContent('JeonNam')}>전라남도</button>
-        <button onClick={() => setAreaSearchContent('GyeongBuk')}>경상북도</button>
-        <button onClick={() => setAreaSearchContent('GyeongNam')}>경상남도</button>
-        <button onClick={() => setAreaSearchContent('Seoul')}>서울특별시</button>
-        <button onClick={() => setAreaSearchContent('Incheon')}>인천광역시</button>
-        <button onClick={() => setAreaSearchContent('Busan')}>부산광역시</button>
-        <button onClick={() => setAreaSearchContent('Daegu')}>대구광역시</button>
-        <button onClick={() => setAreaSearchContent('Gwangju')}>광주광역시</button>
-        <button onClick={() => setAreaSearchContent('Daejeon')}>대전광역시</button>
-        <button onClick={() => setAreaSearchContent('Ulsan')}>울산광역시</button>
-        <button onClick={() => setAreaSearchContent('Sejong')}>세종특별자치시</button>
-        <button onClick={() => setAreaSearchContent('Jeju')}>제주특별자치도</button>
+      />
+      <button
+        className='returnArea'
+        onClick={() => { showArea(); onCloseItem();}}
+      >도/시 다시 선택하기
+      </button>
+      <div className={`areaName ${isAreaSearchHidden ? 'hidden' : ''}`}>
+        <button onClick={() => { setAreaSearchContent('Gyeonggi'); onClose(); showItem() }}>경기도</button>
+        <button onClick={() => { setAreaSearchContent('Gangwon'); onClose(); showItem() }}>강원도</button>
+        <button onClick={() => { setAreaSearchContent('ChungBuk'); onClose(); showItem() }}>충청북도</button>
+        <button onClick={() => { setAreaSearchContent('ChungNam'); onClose(); showItem() }}>충청남도</button>
+        <button onClick={() => { setAreaSearchContent('JeonBuk'); onClose(); showItem() }}>전라북도</button>
+        <button onClick={() => { setAreaSearchContent('JeonNam'); onClose(); showItem() }}>전라남도</button>
+        <button onClick={() => { setAreaSearchContent('GyeongBuk'); onClose(); showItem() }}>경상북도</button>
+        <button onClick={() => { setAreaSearchContent('GyeongNam'); onClose(); showItem() }}>경상남도</button>
+        <button onClick={() => { setAreaSearchContent('Seoul'); onClose(); showItem() }}>서울특별시</button>
+        <button onClick={() => { setAreaSearchContent('Incheon'); onClose(); showItem() }}>인천광역시</button>
+        <button onClick={() => { setAreaSearchContent('Busan'); onClose(); showItem() }}>부산광역시</button>
+        <button onClick={() => { setAreaSearchContent('Daegu'); onClose(); showItem() }}>대구광역시</button>
+        <button onClick={() => { setAreaSearchContent('Gwangju'); onClose(); showItem() }}>광주광역시</button>
+        <button onClick={() => { setAreaSearchContent('Daejeon'); onClose(); showItem() }}>대전광역시</button>
+        <button onClick={() => { setAreaSearchContent('Ulsan'); onClose(); showItem() }}>울산광역시</button>
+        <button onClick={() => { setAreaSearchContent('Sejong'); onClose(); showItem() }}>세종특별자치시</button>
+        <button onClick={() => { setAreaSearchContent('Jeju'); onClose(); showItem() }}>제주특별자치도</button>
       </div>
       <div>
         {content === 'Gyeonggi' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionGyeonggi.map((regionGyeonggi, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionGyeonggi.name}</button>
-              </div>
+              <button key={key}>{regionGyeonggi.name}/{regionGyeonggi.region}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'Gangwon' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionGangwon.map((regionGangwon, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionGangwon.name}</button>
-              </div>
+              <button key={key}>{regionGangwon.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'ChungBuk' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionChungBuk.map((regionChungBuk, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionChungBuk.name}</button>
-              </div>
+              <button key={key}>{regionChungBuk.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'ChungNam' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionChungNam.map((regionChungNam, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionChungNam.name}</button>
-              </div>
+              <button key={key}>{regionChungNam.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'JeonBuk' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionJeonBuk.map((regionJeonBuk, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionJeonBuk.name}</button>
-              </div>
+              <button key={key}>{regionJeonBuk.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'JeonNam' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionJeonNam.map((regionJeonNam, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionJeonNam.name}</button>
-              </div>
+              <button key={key}>{regionJeonNam.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'GyeongBuk' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionGyeongBuk.map((regionGyeongBuk, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionGyeongBuk.name}</button>
-              </div>
+              <button key={key}>{regionGyeongBuk.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'GyeongNam' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionGyeongNam.map((regionGyeongNam, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionGyeongNam.name}</button>
-              </div>
+              <button key={key}>{regionGyeongNam.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'Seoul' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionSeoul.map((regionSeoul, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionSeoul.name}</button>
-              </div>
+              <button key={key}>{regionSeoul.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'Incheon' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionIncheon.map((regionIncheon, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionIncheon.name}</button>
-              </div>
+              <button key={key}>{regionIncheon.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'Busan' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionBusan.map((regionBusan, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionBusan.name}</button>
-              </div>
+              <button key={key}>{regionBusan.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'Daegu' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionDaegu.map((regionDaegu, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionDaegu.name}</button>
-              </div>
+              <button key={key}>{regionDaegu.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'Gwangju' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionGwangju.map((regionGwangju, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionGwangju.name}</button>
-              </div>
+              <button key={key}>{regionGwangju.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'Daejeon' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionDaejeon.map((regionDaejeon, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionDaejeon.name}</button>
-              </div>
+              <button key={key}>{regionDaejeon.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'Ulsan' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionUlsan.map((regionUlsan, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionUlsan.name}</button>
-              </div>
+              <button key={key}>{regionUlsan.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'Sejong' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionSejong.map((regionSejong, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionSejong.name}</button>
-              </div>
+              <button key={key}>{regionSejong.name}</button>
             ))}
-          </>
+          </div>
         )}
         {content === 'Jeju' && (
-          <>
+          <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionJeju.map((regionJeju, key) => (
-              <div className='areaItem'>
-                <button key={key}>{regionJeju.name}</button>
-              </div>
+              <button key={key}>{regionJeju.name}</button>
             ))}
-          </>
+          </div>
         )}
       </div>
     </section>

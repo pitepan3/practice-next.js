@@ -6,6 +6,8 @@ const Sidebar = ({
   setSidebarContent
 }) => {
   const [areaSearchContent, setAreaSearchContent] = useState('');
+  const [isAreaSearchHidden, setAreaSearchHidden] = useState(false);
+  const [isAreaSearchItemHidden, setAreaSearchItemHidden] = useState(false);
 
   return (
     <>
@@ -20,6 +22,12 @@ const Sidebar = ({
           <AreaSearch 
             content={areaSearchContent}
             setAreaSearchContent={setAreaSearchContent}
+            isAreaSearchHidden={isAreaSearchHidden}
+            onClose={() => setAreaSearchHidden(true)}
+            showArea={() => setAreaSearchHidden(false)}
+            isAreaSearchItemHidden={isAreaSearchItemHidden}
+            onCloseItem={() => setAreaSearchItemHidden(true)}
+            showItem={() => setAreaSearchItemHidden(false)}
           />
         )}
         {content === 'myHouse' && (
