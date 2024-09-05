@@ -1,10 +1,11 @@
-import React from 'react';
-import Search from '../search/Search';
+import React, { useState } from 'react';
+import AreaSearch from '../search/AreaSearch';
 
 const Sidebar = ({
   content,
   setSidebarContent
 }) => {
+  const [areaSearchContent, setAreaSearchContent] = useState('');
 
   return (
     <>
@@ -16,7 +17,10 @@ const Sidebar = ({
       </section>
       <section className='sidebar'>
         {content === 'default' && (
-          <Search />
+          <AreaSearch 
+            content={areaSearchContent}
+            setAreaSearchContent={setAreaSearchContent}
+          />
         )}
         {content === 'myHouse' && (
           <div className="sidebar__myHouse">
