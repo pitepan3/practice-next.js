@@ -38,8 +38,9 @@ const AreaSearch = ({
       />
       <button
         className='returnArea'
-        onClick={() => { showArea(); onCloseItem();}}
-      >도/시 다시 선택하기
+        onClick={() => { showArea(); onCloseItem(); }}
+      >
+        도/시 다시 선택하기
       </button>
       <div className={`areaName ${isAreaSearchHidden ? 'hidden' : ''}`}>
         <button onClick={() => { setAreaSearchContent('Gyeonggi'); onClose(); showItem() }}>경기도</button>
@@ -64,7 +65,7 @@ const AreaSearch = ({
         {content === 'Gyeonggi' && (
           <div className={`areaItem ${isAreaSearchItemHidden ? 'hidden' : ''}`}>
             {regionGyeonggi.map((regionGyeonggi, key) => (
-              <button key={key}>{regionGyeonggi.name}/{regionGyeonggi.region}</button>
+              <button key={key}>{regionGyeonggi.name}/{regionGyeonggi.center}</button>
             ))}
           </div>
         )}

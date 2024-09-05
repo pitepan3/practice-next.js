@@ -6,7 +6,7 @@ const Sidebar = ({
   setSidebarContent,
   isSidebarVisible,
   showSidebar,
-  onClose
+  onClose,
 }) => {
   const [areaSearchContent, setAreaSearchContent] = useState('');
   const [isAreaSearchHidden, setAreaSearchHidden] = useState(false);

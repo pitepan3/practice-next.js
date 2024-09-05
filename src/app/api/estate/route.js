@@ -1,6 +1,4 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 
 import { regionBusan } from '@/data/regionBusan'
 import { regionChungBuk } from '@/data/regionChungBuk'
@@ -20,35 +18,34 @@ import { regionSeoul } from '@/data/regionSeoul'
 import { regionUlsan } from '@/data/regionUlsan'
 import { regionJeju } from '@/data/regionJeju'
 
-// REGION_CODES.txt 파일 경로 설정
-const filePath = path.join(process.cwd(), 'REGION_CODES.txt');
+const allRegions = [
+  ...regionBusan,
+  ...regionChungBuk,
+  ...regionChungNam,
+  ...regionDaejeon,
+  ...regionGangwon,
+  ...regionGwangju,
+  ...regionGyeongBuk,
+  ...regionGyeonggi,
+  ...regionGyeongNam,
+  ...regionIncheon,
+  ...regionDaegu,
+  ...regionJeonBuk,
+  ...regionJeonNam,
+  ...regionSejong,
+  ...regionSeoul,
+  ...regionUlsan,
+  ...regionJeju,
+];
 
-// 파일 읽기
-const fileContent = fs.readFileSync(filePath, 'utf-8');
+// REGION_CODES와 CENTER_COORDINATE 배열 설정하기
+const REGION_CODES = [...new Set(allRegions.map(region => region.region.toString()))];
 
-// 각 줄에서 앞 5자리 코드와 중심 좌표 추출
-const regionData = fileContent.split('\n').map(line => {
-  const trimmedLine = line.trim();
-  
-  // 줄이 비어있지 않은 경우만 처리
-  if (trimmedLine) {
-    const code = trimmedLine.slice(0, 5); // 앞 5자리 법정동코드 추출
-    const coords = trimmedLine.slice(trimmedLine.lastIndexOf('\t') + 1); // 중심 좌표 추출
-
-    console.log(coords)
-    return { code, coords };
+const CENTER_COORDINATE = allRegions.reduce((acc, region) => {
+  if (!acc[region.region]) {
+    acc[region.region] = [];
   }
-}).filter(Boolean); // 빈 값 제거
-
-// REGION_CODES 배열
-const REGION_CODES = [...new Set(regionData.map(data => data.code))];
-
-// 각 REGION_CODES와 일치하는 COORDINATES 배열
-const CENTER_COORDINATE = regionData.reduce((acc, data) => {
-  if (!acc[data.code]) {
-    acc[data.code] = [];
-  }
-  acc[data.code].push(data.coords);
+  acc[region.region].push(region.center);
   return acc;
 }, {});
 
