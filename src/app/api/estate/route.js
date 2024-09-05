@@ -17,6 +17,7 @@ const regionData = fileContent.split('\n').map(line => {
     const code = trimmedLine.slice(0, 5); // 앞 5자리 법정동코드 추출
     const coords = trimmedLine.slice(trimmedLine.lastIndexOf('\t') + 1); // 중심 좌표 추출
 
+    console.log(coords)
     return { code, coords };
   }
 }).filter(Boolean); // 빈 값 제거

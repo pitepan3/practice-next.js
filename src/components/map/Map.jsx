@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import Search from "../search/AreaSearch";
 
 const Map = () => {
   const [centerCoordinates, setCenterCoordinates] = useState({});
