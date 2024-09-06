@@ -9,7 +9,7 @@ import Login from "@/components/modal/LogIn";
 import SignUp from "@/components/modal/SignUp";
 
 
-export default function Home () {
+export default function Home() {
   const { data: session } = useSession();
 
   // 로그인 및 회원가입 모달 상태 관리
@@ -45,9 +45,7 @@ export default function Home () {
     fetchEstateData();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  
+
 
   return (
     <main id="main">

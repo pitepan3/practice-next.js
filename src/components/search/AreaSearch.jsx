@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { regionTitle } from '@/data/regionTitle'
 import { regionBusan } from '@/data/regionBusan'
 import { regionChungBuk } from '@/data/regionChungBuk'
 import { regionChungNam } from '@/data/regionChungNam'
@@ -43,23 +44,14 @@ const AreaSearch = ({
         도/시 다시 선택하기
       </button>
       <div className={`areaName ${isAreaSearchHidden ? 'hidden' : ''}`}>
-        <button onClick={() => { setAreaSearchContent('Gyeonggi'); onClose(); showItem() }}>경기도</button>
-        <button onClick={() => { setAreaSearchContent('Gangwon'); onClose(); showItem() }}>강원도</button>
-        <button onClick={() => { setAreaSearchContent('ChungBuk'); onClose(); showItem() }}>충청북도</button>
-        <button onClick={() => { setAreaSearchContent('ChungNam'); onClose(); showItem() }}>충청남도</button>
-        <button onClick={() => { setAreaSearchContent('JeonBuk'); onClose(); showItem() }}>전라북도</button>
-        <button onClick={() => { setAreaSearchContent('JeonNam'); onClose(); showItem() }}>전라남도</button>
-        <button onClick={() => { setAreaSearchContent('GyeongBuk'); onClose(); showItem() }}>경상북도</button>
-        <button onClick={() => { setAreaSearchContent('GyeongNam'); onClose(); showItem() }}>경상남도</button>
-        <button onClick={() => { setAreaSearchContent('Seoul'); onClose(); showItem() }}>서울특별시</button>
-        <button onClick={() => { setAreaSearchContent('Incheon'); onClose(); showItem() }}>인천광역시</button>
-        <button onClick={() => { setAreaSearchContent('Busan'); onClose(); showItem() }}>부산광역시</button>
-        <button onClick={() => { setAreaSearchContent('Daegu'); onClose(); showItem() }}>대구광역시</button>
-        <button onClick={() => { setAreaSearchContent('Gwangju'); onClose(); showItem() }}>광주광역시</button>
-        <button onClick={() => { setAreaSearchContent('Daejeon'); onClose(); showItem() }}>대전광역시</button>
-        <button onClick={() => { setAreaSearchContent('Ulsan'); onClose(); showItem() }}>울산광역시</button>
-        <button onClick={() => { setAreaSearchContent('Sejong'); onClose(); showItem() }}>세종특별자치시</button>
-        <button onClick={() => { setAreaSearchContent('Jeju'); onClose(); showItem() }}>제주특별자치도</button>
+        {regionTitle.map((regionTitle, key) => (
+          <button
+            key={key}
+            onClick={() => { setAreaSearchContent(`${regionTitle.engName}`); onClose(); showItem() }}
+          >
+            {regionTitle.koName}
+          </button>
+        ))}
       </div>
       <div>
         {content === 'Gyeonggi' && (
