@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 
-const Map = () => {
+const Map = ({ center }) => {
   const [centerCoordinates, setCenterCoordinates] = useState({});
   const [additionalInfo, setAdditionalInfo] = useState({});
   const mapRef = useRef(null);
@@ -152,6 +152,14 @@ const Map = () => {
       document.head.removeChild(kakaoMapScript);
     };
   }, [centerCoordinates, additionalInfo]);
+
+  // center prop이 변경될 때마다 지도 중심 이동
+  useEffect(() => {
+    if (mapRef.current && center) {
+      const newCenter = new window.kakao.maps.LatLng(center.lat, center.lng);
+      mapRef.current.setCenter(newCenter);
+    }
+  }, [center]);
 
   const adjustMarkerVisibility = (map) => {
     const level = map.getLevel();

@@ -7,6 +7,7 @@ const Sidebar = ({
   isSidebarVisible,
   showSidebar,
   onClose,
+  setCenter
 }) => {
   const [areaSearchContent, setAreaSearchContent] = useState('');
   const [isAreaSearchHidden, setAreaSearchHidden] = useState(false);
@@ -42,6 +43,7 @@ const Sidebar = ({
             isAreaSearchItemHidden={isAreaSearchItemHidden}
             onCloseItem={() => setAreaSearchItemHidden(true)}
             showItem={() => setAreaSearchItemHidden(false)}
+            setCenter={setCenter}
           />
         )}
         {content === 'myHouse' && (

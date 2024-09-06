@@ -11,6 +11,8 @@ import SignUp from "@/components/modal/SignUp";
 
 export default function Home() {
   const { data: session } = useSession();
+  // 지역검색 중심좌표 이동하기 위한 상태 관리
+  const [center, setCenter] = useState({ lat: 37.5665, lng: 126.9780 }); // 초기 서울 중심좌표
 
   // 로그인 및 회원가입 모달 상태 관리
   const [isLoginVisible, setLoginVisible] = useState(false);
@@ -68,8 +70,11 @@ export default function Home() {
         isSidebarVisible={isSidebarVisible}
         showSidebar={() => setSidebarVisible(true)}
         onClose={() => setSidebarVisible(false)}
+        setCenter={setCenter}
       />
-      <Map />
+      <Map
+        center={center}
+      />
     </main>
   );
 }
