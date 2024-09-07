@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 
-const Map = ({ center }) => {
+const Map = ({ center, setInfoWindowContent }) => {
   const [centerCoordinates, setCenterCoordinates] = useState({});
   const [additionalInfo, setAdditionalInfo] = useState({});
   const mapRef = useRef(null);
@@ -121,6 +121,9 @@ const Map = ({ center }) => {
                   infowindow.open(map, marker);
                   infowindowRef.current = infowindow;
                 }
+
+                // 클릭된 마커의 정보 업데이트
+                setInfoWindowContent(infowindowContent);
               });
 
               markers.push(marker);
@@ -151,7 +154,7 @@ const Map = ({ center }) => {
     return () => {
       document.head.removeChild(kakaoMapScript);
     };
-  }, [centerCoordinates, additionalInfo]);
+  }, [centerCoordinates, additionalInfo, setInfoWindowContent]);
 
   // center prop이 변경될 때마다 지도 중심 이동
   useEffect(() => {

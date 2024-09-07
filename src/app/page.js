@@ -21,6 +21,7 @@ export default function Home() {
   // 사이드바 상태 관리
   const [sidebarContent, setSidebarContent] = useState('default');
   const [isSidebarVisible, setSidebarVisible] = useState('true');
+  const [infoWindowContent, setInfoWindowContent] = useState(null);
 
   // 부동산 관련 공공데이터 API 호출
   const [estateData, setEstateData] = useState(null);
@@ -71,9 +72,11 @@ export default function Home() {
         showSidebar={() => setSidebarVisible(true)}
         onClose={() => setSidebarVisible(false)}
         setCenter={setCenter}
+        infoWindowContent={infoWindowContent}
       />
       <Map
         center={center}
+        setInfoWindowContent={setInfoWindowContent}
       />
     </main>
   );

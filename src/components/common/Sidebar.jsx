@@ -7,7 +7,8 @@ const Sidebar = ({
   isSidebarVisible,
   showSidebar,
   onClose,
-  setCenter
+  setCenter,
+  infoWindowContent
 }) => {
   const [areaSearchContent, setAreaSearchContent] = useState('');
   const [isAreaSearchHidden, setAreaSearchHidden] = useState(false);
@@ -49,7 +50,7 @@ const Sidebar = ({
         {content === 'myHouse' && (
           <div className="sidebar__myHouse">
             <div className='userName'>
-              myHouse
+              {infoWindowContent}
             </div>
           </div>
         )}
