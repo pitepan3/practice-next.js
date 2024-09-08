@@ -24,6 +24,9 @@ const myPage = () => {
         <section className='myPage__main'>
           main
         </section>
+        <section className='myPage__footer'>
+          footer
+        </section>
       </div>
     </main>
   )
