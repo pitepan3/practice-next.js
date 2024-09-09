@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import useAptPrice from "@/hooks/aptPrice/useAptPrice";
 
 const Map = ({ center, setInfoWindowContent }) => {
   const [centerCoordinates, setCenterCoordinates] = useState({});
@@ -9,6 +10,22 @@ const Map = ({ center, setInfoWindowContent }) => {
   const clustererRef = useRef(null);
   const markersRef = useRef([]);
   const infowindowRef = useRef(null);
+
+  // useAptPrice
+  const { data: aptPriceData, isLoading: aptLoading, error: aptError } = useAptPrice();
+
+  useEffect(() => {
+    if (aptError) {
+      console.error('Error fetching apartment price data:', aptError);
+    }
+    if (aptLoading) {
+      console.log('Loading apartment price data...');
+    }
+    if (aptPriceData) {
+      console.log('Fetched apartment price data:', aptPriceData);
+    }
+  }, [aptError, aptLoading, aptPriceData]);
+  // useAptPrice
 
   useEffect(() => {
     // API로부터 REGION_CODES와 CENTER_COORDINATE 데이터를 가져옵니다.

@@ -1,0 +1,32 @@
+아파트 동 정보: aptDong: ""
+아파트 이름: aptNm: "동주파크"
+아파트 고유 식별 번호: aptSeq: "26110-33"
+본번(번지): bonbun: 106
+부번(번지): bubun: 9
+건축 연도: buildYear: 1983
+구매자 구분: buyerGbn: ""
+계약일: cdealDay: ""
+계약 유형: cdealType: ""
+거래 금액: dealAmount: "12,750"
+거래 일: dealDay: 26
+거래 월: dealMonth: 12
+거래 연도: dealYear: 2015
+거래 유형: dealingGbn: ""
+중개사무소 소재지 시군구명: estateAgentSggNm: ""
+전용 면적(제곱미터): excluUseAr: 77.83
+층수: floor: 2
+지번: jibun: "106-9"
+지목코드: landCd: 1
+토지 임대 여부: landLeaseholdGbn: "N"
+등록일자: rgstDate: ""
+도로명: roadNm: "망양로"
+도로명 본번: roadNmBonbun: 405
+도로명 부번: roadNmBubun: 0
+도로명 코드: roadNmCd: 3125011
+도로명 일련번호: roadNmSeq: 1
+도로명 시군구 코드: roadNmSggCd: 26110
+도로명 번호부여 코드: roadNmbCd: 0
+시군구 코드(법정동 앞5자리): sggCd: 26110
+읍면동 코드(법정동 뒷5자리): umdCd: 10100
+매도자 구분: slerGbn: ""
+읍면동 이름: umdNm: "영주동"
