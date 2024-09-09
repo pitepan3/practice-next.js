@@ -12,6 +12,7 @@
     "@googlemaps/markerclustererplus": "^1.2.10",
     "@tanstack/react-query": "^5.54.1",
     "axios": "^1.7.4",
+    "fast-xml-parser": "^4.5.0",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
     "react": "^18",

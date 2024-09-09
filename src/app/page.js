@@ -2,11 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { useQuery } from "@tanstack/react-query";
 import Header from "@/components/common/Header";
 import Sidebar from "@/components/common/Sidebar";
 import Map from "@/components/map/Map";
 import Login from "@/components/modal/LogIn";
 import SignUp from "@/components/modal/SignUp";
+import useAptPrice from "@/hooks/aptPrice/useAptPrice";
 
 
 export default function Home() {
@@ -48,6 +50,20 @@ export default function Home() {
     fetchEstateData();
   }, []);
 
+  // 아파트 거래가 공공데이터 API 호출
+  const { data: aptPriceData, isLoading: aptLoading, error: aptError } = useAptPrice();
+
+  useEffect(() => {
+    if (aptError) {
+      console.error('Error fetching apartment price data:', aptError);
+    }
+    if (aptLoading) {
+      console.log('Loading apartment price data...');
+    }
+    if (aptPriceData) {
+      console.log('Fetched apartment price data:', aptPriceData);
+    }
+  }, [aptError, aptLoading, aptPriceData]);
 
 
   return (
