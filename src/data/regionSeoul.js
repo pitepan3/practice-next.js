@@ -1,7 +1,7 @@
 export const regionSeoul = [
   {
     name: '종로구',
-    region: 1110,
+    region: 11110,
     center: '37.5735, 126.9794'
   },
   {
