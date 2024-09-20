@@ -9,7 +9,7 @@ const fetchAptPriceData = async () => {
   const parser = new XMLParser();
 
   const requests = REGION_CODES.map((regionCode) => {
-    const apiUrl = `https://apis.data.go.kr/1613000/RTMSDataSvcAptTradeDev/getRTMSDataSvcAptTradeDev?serviceKey=${API_KEY}&LAWD_CD=${regionCode}&DEAL_YMD=201512&pageNo=1&numOfRows=10`;
+    const apiUrl = `https://apis.data.go.kr/1613000/RTMSDataSvcAptTradeDev/getRTMSDataSvcAptTradeDev?serviceKey=${API_KEY}&LAWD_CD=${regionCode}&DEAL_YMD=202408&pageNo=1&numOfRows=10`;
     return fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {

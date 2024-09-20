@@ -49,9 +49,7 @@ const Sidebar = ({
         )}
         {content === 'myHouse' && (
           <div className="sidebar__myHouse">
-            <div className='userName'>
-              {infoWindowContent}
-            </div>
+            <div className='userName' dangerouslySetInnerHTML={{ __html: infoWindowContent }} />
           </div>
         )}
       </section>

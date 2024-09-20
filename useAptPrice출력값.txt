@@ -1,20 +1,21 @@
-아파트 동 정보: aptDong: ""
 아파트 이름: aptNm: "동주파크"
+거래 금액: dealAmount: "12,750"
+전용 면적(제곱미터): excluUseAr: 77.83
+건축 연도: buildYear: 1983
+층수: floor: 2
+거래 연도: dealYear: 2015
+거래 월: dealMonth: 12
+
+아파트 동 정보: aptDong: ""
 아파트 고유 식별 번호: aptSeq: "26110-33"
 본번(번지): bonbun: 106
 부번(번지): bubun: 9
-건축 연도: buildYear: 1983
 구매자 구분: buyerGbn: ""
 계약일: cdealDay: ""
 계약 유형: cdealType: ""
-거래 금액: dealAmount: "12,750"
 거래 일: dealDay: 26
-거래 월: dealMonth: 12
-거래 연도: dealYear: 2015
 거래 유형: dealingGbn: ""
 중개사무소 소재지 시군구명: estateAgentSggNm: ""
-전용 면적(제곱미터): excluUseAr: 77.83
-층수: floor: 2
 지번: jibun: "106-9"
 지목코드: landCd: 1
 토지 임대 여부: landLeaseholdGbn: "N"
